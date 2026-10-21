@@ -25,6 +25,8 @@ model Profile {
   email        String
   githubUrl    String?
   linkedinUrl  String?
+  avatarUrl    String?
+  resumeUrl    String?
   availability String?
   aboutTitle   String?
   aboutText    String?
@@ -43,6 +45,7 @@ model Project {
   githubUrl   String?
   liveUrl     String?
   imageUrl    String?
+  imageUrls   String[] @default([])
   isPublished Boolean  @default(true)
   isFeatured  Boolean  @default(false)
   createdAt   DateTime @default(now())
@@ -50,11 +53,13 @@ model Project {
 }
 
 model Skill {
-  id        String @id @default(cuid())
-  name      String
-  category  String
-  level     Int    @default(70)
-  sortOrder Int    @default(0)
+  id          String  @id @default(cuid())
+  name        String
+  category    String
+  level       Int     @default(70)
+  imageUrl    String?
+  isPublished Boolean @default(true)
+  sortOrder   Int     @default(0)
 }
 
 model Experience {
@@ -65,6 +70,8 @@ model Experience {
   startDate   String
   endDate     String?
   description String
+  imageUrls   String[] @default([])
+  isPublished Boolean @default(true)
   sortOrder   Int      @default(0)
 }
 
@@ -76,6 +83,7 @@ model Education {
   startDate   String
   endDate     String?
   description String?
+  isPublished Boolean @default(true)
   sortOrder   Int      @default(0)
 }
 
@@ -85,6 +93,8 @@ model Certification {
   issuer        String
   issueDate     String?
   credentialUrl String?
+  imageUrl      String?
+  isPublished   Boolean @default(true)
   sortOrder     Int      @default(0)
 }
 
@@ -93,6 +103,7 @@ model Service {
   title       String
   description String
   icon        String
+  isPublished Boolean @default(true)
   sortOrder   Int      @default(0)
 }
 
@@ -100,6 +111,7 @@ model ContactMessage {
   id        String   @id @default(cuid())
   name      String
   email     String
+  phone     String
   subject   String
   message   String
   status    String   @default("unread")

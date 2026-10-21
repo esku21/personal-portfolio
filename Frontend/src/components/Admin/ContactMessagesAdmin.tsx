@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mail, Trash2, CheckCircle2, Archive, Clock, Search, ArrowUpRight } from 'lucide-react'
+import { Mail, Trash2, CheckCircle2, Archive, Clock, Search, ArrowUpRight, Phone, UserRound, X } from 'lucide-react'
 import type { ContactMessage } from '../../types'
 import { portfolioApi } from '../../services/api'
 
@@ -12,22 +12,36 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
   const [filter, setFilter] = useState<'all' | 'unread' | 'read' | 'archived'>('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedMessage, setSelectedMessage] = useState<ContactMessage | null>(null)
+  const [actionError, setActionError] = useState('')
+  const [busyId, setBusyId] = useState('')
 
   const handleStatusChange = async (id: string, status: 'unread' | 'read' | 'archived') => {
-    await portfolioApi.updateMessage(id, status)
-    onRefresh()
-    if (selectedMessage?.id === id) {
-      setSelectedMessage({ ...selectedMessage, status })
+    setActionError('')
+    setBusyId(id)
+    try {
+      await portfolioApi.updateMessage(id, status)
+      setSelectedMessage((current) => current?.id === id ? { ...current, status } : current)
+      await onRefresh()
+    } catch (error) {
+      setActionError(error instanceof Error ? error.message : 'Could not update this message.')
+    } finally {
+      setBusyId('')
     }
   }
 
   const handleDelete = async (id: string) => {
     if (confirm('Delete this message permanently?')) {
-      await portfolioApi.deleteMessage(id)
-      if (selectedMessage?.id === id) {
-        setSelectedMessage(null)
+      setActionError('')
+      setBusyId(id)
+      try {
+        await portfolioApi.deleteMessage(id)
+        if (selectedMessage?.id === id) setSelectedMessage(null)
+        await onRefresh()
+      } catch (error) {
+        setActionError(error instanceof Error ? error.message : 'Could not delete this message.')
+      } finally {
+        setBusyId('')
       }
-      onRefresh()
     }
   }
 
@@ -36,27 +50,30 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
     const matchesSearch = 
       m.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       m.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      m.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
       m.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
       m.message.toLowerCase().includes(searchTerm.toLowerCase())
     return matchesFilter && matchesSearch
+  }).sort((left, right) => {
+    return new Date(right.createdAt ?? 0).getTime() - new Date(left.createdAt ?? 0).getTime()
   })
 
   return (
-    <div className="space-y-6">
+    <div className="admin-workspace-page space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="admin-page-header flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
             <Mail className="text-rose-500" size={24} />
             <span>Contact Messages</span>
           </h1>
           <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
-            Incoming inquiries from the public portfolio contact form (PostgreSQL "ContactMessage" table)
+            Review inquiries, manage their status, and reply directly from the inbox.
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-1 p-1 rounded-xl bg-neutral-100 dark:bg-neutral-800/70 border border-neutral-200 dark:border-neutral-700/60 self-start sm:self-auto text-xs">
+        <div className="flex max-w-full items-center gap-1 overflow-x-auto rounded-xl border border-neutral-200 bg-neutral-100 p-1 text-xs dark:border-neutral-700/60 dark:bg-neutral-800/70 self-start sm:self-auto">
           {(['all', 'unread', 'read', 'archived'] as const).map((tab) => (
             <button
               key={tab}
@@ -83,12 +100,23 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
         <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
         <input
           type="text"
-          placeholder="Search by sender, email or message..."
+          placeholder="Search name, email, phone or message..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 focus:outline-none"
         />
       </div>
+
+      {actionError && (
+        <div role="alert" className="flex items-center justify-between gap-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-xs text-rose-700 dark:border-rose-900/60 dark:bg-rose-950/30 dark:text-rose-300">
+          <span>{actionError}</span>
+          <button type="button" onClick={() => setActionError('')} aria-label="Dismiss error"><X size={15} /></button>
+        </div>
+      )}
+
+      <p className="text-xs text-neutral-500 dark:text-neutral-400">
+        Showing <span className="font-semibold text-neutral-700 dark:text-neutral-200">{filtered.length}</span> of {messages.length} messages
+      </p>
 
       {/* Two Column In-Box View: Message List + Detail Pane */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -103,10 +131,11 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
                   handleStatusChange(msg.id, 'read')
                 }
               }}
-              className={`p-4 cursor-pointer transition-colors ${
+              className={`cursor-pointer border-l-4 p-4 transition-colors ${
                 selectedMessage?.id === msg.id
-                  ? 'bg-[#0d5543]/5 dark:bg-[#2dd4bf]/5 border-l-4 border-l-[#0d5543] dark:border-l-[#2dd4bf]'
-                  : msg.status === 'unread'
+                  ? 'border-l-[#0d5543] bg-[#0d5543]/5 dark:border-l-[#2dd4bf] dark:bg-[#2dd4bf]/5'
+                  : 'border-l-transparent'
+                } ${msg.status === 'unread' && selectedMessage?.id !== msg.id
                     ? 'bg-rose-50/40 dark:bg-rose-950/20 hover:bg-rose-50/70'
                     : 'hover:bg-neutral-50/80 dark:hover:bg-neutral-800/40'
               }`}
@@ -133,7 +162,7 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
               </p>
               <div className="text-[10px] text-neutral-400 mt-2 flex items-center gap-1">
                 <Clock size={11} />
-                {msg.createdAt ? new Date(msg.createdAt).toLocaleDateString() : 'Recent'} · {msg.email}
+                {msg.createdAt ? new Date(msg.createdAt).toLocaleDateString() : 'Recent'} · {msg.email} · {msg.phone}
               </div>
             </div>
           ))}
@@ -146,7 +175,7 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
         </div>
 
         {/* Message Details Preview Pane */}
-        <div className="lg:col-span-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 sticky top-6 shadow-sm">
+        <div className="lg:sticky lg:top-6 lg:col-span-6 rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 sm:p-6">
           {selectedMessage ? (
             <div className="space-y-4">
               <div className="flex items-center justify-between pb-4 border-b border-neutral-100 dark:border-neutral-800">
@@ -154,13 +183,17 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
                   <h3 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">
                     {selectedMessage.subject}
                   </h3>
-                  <p className="text-xs text-neutral-500 mt-0.5">
-                    From: <span className="font-medium text-neutral-800 dark:text-neutral-200">{selectedMessage.name}</span> ({selectedMessage.email})
-                  </p>
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500">
+                    <span className="inline-flex items-center gap-1"><UserRound size={13} />{selectedMessage.name}</span>
+                    <a href={`mailto:${selectedMessage.email}`} className="inline-flex items-center gap-1 hover:text-[#0d5543]"><Mail size={13} />{selectedMessage.email}</a>
+                    <a href={`tel:${selectedMessage.phone}`} className="inline-flex items-center gap-1 hover:text-[#0d5543]"><Phone size={13} />{selectedMessage.phone}</a>
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-1.5">
                   <button
+                    type="button"
+                    disabled={busyId === selectedMessage.id}
                     onClick={() => handleStatusChange(selectedMessage.id, selectedMessage.status === 'read' ? 'unread' : 'read')}
                     className="p-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs"
                     title="Toggle Read/Unread"
@@ -168,6 +201,8 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
                     <CheckCircle2 size={15} />
                   </button>
                   <button
+                    type="button"
+                    disabled={busyId === selectedMessage.id}
                     onClick={() => handleStatusChange(selectedMessage.id, 'archived')}
                     className="p-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs"
                     title="Archive"
@@ -175,6 +210,8 @@ export function ContactMessagesAdmin({ messages, onRefresh }: ContactMessagesAdm
                     <Archive size={15} />
                   </button>
                   <button
+                    type="button"
+                    disabled={busyId === selectedMessage.id}
                     onClick={() => handleDelete(selectedMessage.id)}
                     className="p-1.5 rounded-lg border border-red-200 dark:border-red-900 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 text-xs"
                     title="Delete"

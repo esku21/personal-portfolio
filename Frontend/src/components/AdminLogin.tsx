@@ -30,11 +30,11 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
     setError('')
 
     try {
-      const { data } = await portfolioApi.login(email, password)
+      const { data } = await portfolioApi.login(email.trim(), password)
       localStorage.setItem('admin_token', data.token)
       onLogin(data.token)
     } catch (err: any) {
-      const message = err.response?.data?.message || 'Invalid email or password. Please try again.'
+      const message = err instanceof Error ? err.message : 'Invalid email or password. Please try again.'
       setError(message)
     } finally {
       setLoading(false)

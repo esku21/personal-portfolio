@@ -19,18 +19,19 @@ import type {
   Service 
 } from '../types'
 import { portfolioApi } from '../services/api'
-import { AdminSidebar, type AdminTab } from './admin/AdminSidebar'
-import { DashboardView } from './admin/DashboardView'
-import { ProjectsAdmin } from './admin/ProjectsAdmin'
-import { ContactMessagesAdmin } from './admin/ContactMessagesAdmin'
-import { CertificationsAdmin } from './admin/CertificationsAdmin'
-import { EducationAdmin } from './admin/EducationAdmin'
-import { ExperienceAdmin } from './admin/ExperienceAdmin'
-import { ServicesAdmin } from './admin/ServicesAdmin'
-import { SkillsAdmin } from './admin/SkillsAdmin'
-import { ProfileAdmin } from './admin/ProfileAdmin'
+import { AdminSidebar, type AdminTab } from './Admin/AdminSidebar'
+import { DashboardView } from './Admin/DashboardView'
+import { ProjectsAdmin } from './Admin/ProjectsAdmin'
+import { ContactMessagesAdmin } from './Admin/ContactMessagesAdmin'
+import { CertificationsAdmin } from './Admin/CertificationsAdmin'
+import { EducationAdmin } from './Admin/EducationAdmin'
+import { ExperienceAdmin } from './Admin/ExperienceAdmin'
+import { ServicesAdmin } from './Admin/ServicesAdmin'
+import { SkillsAdmin } from './Admin/SkillsAdmin'
+import { ProfileAdmin } from './Admin/ProfileAdmin'
+import { ReportsAdmin } from './Admin/ReportsAdmin'
 
-interface AdminDashboardProps {
+export interface AdminDashboardProps {
   token: string
   onLogout: () => void
   dark?: boolean
@@ -88,7 +89,7 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
       setCertifications(certRes.data)
       setServices(srvRes.data)
     } catch (err) {
-      setError('Could not fetch latest database records. Using local state.')
+      setError('Could not refresh admin data. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -116,18 +117,19 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
     switch (tab) {
       case 'dashboard': return 'Dashboard Overview'
       case 'projects': return 'Projects'
-      case 'certifications': return 'Certification'
-      case 'contact-messages': return 'ContactMessage'
+      case 'certifications': return 'Certifications'
+      case 'contact-messages': return 'Messages'
       case 'education': return 'Education'
       case 'experience': return 'Experience'
       case 'services': return 'Services'
       case 'skills': return 'Skills'
+      case 'reports': return 'Reports & Analytics'
       case 'profile': return 'Profile Settings'
     }
   }
 
   return (
-    <div className="min-h-screen flex bg-neutral-100/70 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+    <div className="admin-shell min-h-screen flex bg-[#f4f7f5] text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <AdminSidebar
         activeTab={activeTab}
         onSelectTab={setActiveTab}
@@ -138,13 +140,15 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
         onLogout={onLogout}
       />
 
-      <div className="flex-1 flex flex-col min-w-0">
-        <header className="h-16 px-4 sm:px-8 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between sticky top-0 z-30">
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col">
+        <header className="print:hidden sticky top-0 z-30 flex h-16 items-center justify-between border-b border-neutral-200/80 bg-white/90 px-3 backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-950/90 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-2 rounded-lg text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+              className="rounded-xl p-2.5 text-neutral-600 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0d5543]/40 dark:text-neutral-300 dark:hover:bg-neutral-800 md:hidden"
               aria-label="Open navigation drawer"
+              aria-expanded={mobileOpen}
+              aria-controls="admin-navigation"
             >
               <Menu size={20} />
             </button>
@@ -161,8 +165,9 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => void refreshAll()}
-              className="p-2 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="rounded-xl p-2.5 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0d5543]/40 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
               title="Refresh database records"
+              aria-label="Refresh admin data"
             >
               <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
             </button>
@@ -170,8 +175,9 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
             {setDark && (
               <button
                 onClick={() => setDark(!dark)}
-                className="p-2 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="rounded-xl p-2.5 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0d5543]/40 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
                 title="Toggle Theme"
+                aria-label="Toggle color theme"
               >
                 {dark ? <Sun size={17} /> : <Moon size={17} />}
               </button>
@@ -179,8 +185,9 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
 
             <button
               onClick={() => setActiveTab('contact-messages')}
-              className="relative p-2 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="relative rounded-xl p-2.5 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0d5543]/40 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
               title="Inbox messages"
+              aria-label={`Inbox messages${unreadCount ? `, ${unreadCount} unread` : ''}`}
             >
               <Bell size={17} />
               {unreadCount > 0 && (
@@ -207,7 +214,7 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
           </div>
         )}
 
-        <main className="flex-1 p-4 sm:p-8 max-w-7xl w-full mx-auto">
+        <main id="admin-content" className="admin-content mx-auto w-full max-w-[1600px] flex-1 p-3 sm:p-5 lg:p-8">
           {activeTab === 'dashboard' && (
             <DashboardView
               stats={stats}
@@ -269,6 +276,8 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
               onRefresh={refreshAll}
             />
           )}
+
+          {activeTab === 'reports' && <ReportsAdmin />}
 
           {activeTab === 'profile' && (
             <ProfileAdmin

@@ -1,7 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @source "./src";
-
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
 :root { 
   font-family: Manrope, sans-serif; 
@@ -77,4 +76,112 @@ input.input-with-trailing-icon {
 input.login-input-both {
   padding-left: 2.75rem !important;
   padding-right: 2.75rem !important;
+}
+
+.admin-shell {
+  background-image: radial-gradient(ellipse at 80% 0%, rgb(13 85 67 / 5%), transparent 34rem);
+}
+
+.admin-content {
+  min-width: 0;
+}
+
+.admin-workspace-page {
+  min-width: 0;
+}
+
+.admin-record-card {
+  border-color: rgb(226 232 240 / 88%);
+  box-shadow: 0 4px 14px rgb(15 23 42 / 3%);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.admin-record-card:hover {
+  border-color: rgb(13 128 98 / 35%);
+  box-shadow: 0 12px 28px rgb(15 23 42 / 7%);
+  transform: translateY(-1px);
+}
+
+.dark .admin-record-card {
+  border-color: rgb(38 38 38 / 90%);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 12%);
+}
+
+.dark .admin-record-card:hover {
+  border-color: rgb(45 212 191 / 30%);
+  box-shadow: 0 12px 28px rgb(0 0 0 / 20%);
+}
+
+.admin-page-header {
+  min-width: 0;
+  padding: 1.125rem 1.25rem;
+  border: 1px solid rgb(226 232 240 / 85%);
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgb(255 255 255 / 98%), rgb(248 250 249 / 96%));
+  box-shadow: 0 8px 24px rgb(15 23 42 / 4%);
+}
+
+.dark .admin-page-header {
+  border-color: rgb(38 38 38 / 90%);
+  background: linear-gradient(135deg, rgb(23 23 23 / 98%), rgb(17 24 21 / 96%));
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+}
+
+.admin-content :is(input, select, textarea):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus-visible {
+  outline: 2px solid rgb(13 85 67 / 28%);
+  outline-offset: 1px;
+  border-color: #0d8062;
+}
+
+.dark .admin-content :is(input, select, textarea):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus-visible {
+  outline-color: rgb(45 212 191 / 32%);
+  border-color: #2dd4bf;
+}
+
+.admin-content :is(button, a) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.admin-content button:focus-visible,
+.admin-content a:focus-visible {
+  outline: 2px solid rgb(13 128 98 / 55%);
+  outline-offset: 2px;
+}
+
+.admin-content .fixed.inset-0.z-50 {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.admin-content .fixed.inset-0.z-50 > div {
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 640px) {
+  .admin-page-header {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .admin-content .fixed.inset-0.z-50 {
+    align-items: flex-start;
+    padding: 0.75rem;
+  }
+
+  .admin-content .fixed.inset-0.z-50 > div {
+    max-height: calc(100dvh - 1.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-shell *,
+  .admin-shell *::before,
+  .admin-shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

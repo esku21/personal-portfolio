@@ -1,6 +1,6 @@
 import { prisma } from '../lib/prisma.js'
 
-export function createMessage(data: { name: string; email: string; subject: string; message: string }) {
+export function createMessage(data: { name: string; email: string; phone: string; subject: string; message: string }) {
   return prisma.contactMessage.create({ data })
 }
 
@@ -10,6 +10,10 @@ export function listMessages() {
 
 export function updateMessageStatus(id: string, status: string) {
   return prisma.contactMessage.update({ where: { id }, data: { status } })
+}
+
+export function deleteMessage(id: string) {
+  return prisma.contactMessage.delete({ where: { id } })
 }
 
 export async function getStats() {

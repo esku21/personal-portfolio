@@ -8,6 +8,9 @@ export function listMessages() {
 export function updateMessageStatus(id, status) {
     return prisma.contactMessage.update({ where: { id }, data: { status } });
 }
+export function deleteMessage(id) {
+    return prisma.contactMessage.delete({ where: { id } });
+}
 export async function getStats() {
     const [projects, messages, unread, published, featured] = await Promise.all([
         prisma.project.count(),

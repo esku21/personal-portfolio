@@ -138,6 +138,8 @@ exports.Prisma.ProfileScalarFieldEnum = {
   email: 'email',
   githubUrl: 'githubUrl',
   linkedinUrl: 'linkedinUrl',
+  avatarUrl: 'avatarUrl',
+  resumeUrl: 'resumeUrl',
   availability: 'availability',
   aboutTitle: 'aboutTitle',
   aboutText: 'aboutText',
@@ -156,6 +158,7 @@ exports.Prisma.ProjectScalarFieldEnum = {
   githubUrl: 'githubUrl',
   liveUrl: 'liveUrl',
   imageUrl: 'imageUrl',
+  imageUrls: 'imageUrls',
   isPublished: 'isPublished',
   isFeatured: 'isFeatured',
   createdAt: 'createdAt',
@@ -167,6 +170,8 @@ exports.Prisma.SkillScalarFieldEnum = {
   name: 'name',
   category: 'category',
   level: 'level',
+  imageUrl: 'imageUrl',
+  isPublished: 'isPublished',
   sortOrder: 'sortOrder'
 };
 
@@ -178,6 +183,8 @@ exports.Prisma.ExperienceScalarFieldEnum = {
   startDate: 'startDate',
   endDate: 'endDate',
   description: 'description',
+  imageUrls: 'imageUrls',
+  isPublished: 'isPublished',
   sortOrder: 'sortOrder'
 };
 
@@ -189,6 +196,7 @@ exports.Prisma.EducationScalarFieldEnum = {
   startDate: 'startDate',
   endDate: 'endDate',
   description: 'description',
+  isPublished: 'isPublished',
   sortOrder: 'sortOrder'
 };
 
@@ -198,6 +206,8 @@ exports.Prisma.CertificationScalarFieldEnum = {
   issuer: 'issuer',
   issueDate: 'issueDate',
   credentialUrl: 'credentialUrl',
+  imageUrl: 'imageUrl',
+  isPublished: 'isPublished',
   sortOrder: 'sortOrder'
 };
 
@@ -206,6 +216,7 @@ exports.Prisma.ServiceScalarFieldEnum = {
   title: 'title',
   description: 'description',
   icon: 'icon',
+  isPublished: 'isPublished',
   sortOrder: 'sortOrder'
 };
 
@@ -213,6 +224,7 @@ exports.Prisma.ContactMessageScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
+  phone: 'phone',
   subject: 'subject',
   message: 'message',
   status: 'status',

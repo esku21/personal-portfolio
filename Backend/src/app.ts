@@ -4,7 +4,9 @@ import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import swaggerUi from 'swagger-ui-express'
 import { env } from './lib/env.js'
+import { logger } from './lib/logger.js'
 import { prisma } from './lib/prisma.js'
+import { requireAuth } from './middleware/auth.js'
 import { errorHandler } from './middleware/errors.js'
 import { publicRouter } from './routes/public.routes.js'
 import { authRouter } from './routes/auth.routes.js'
@@ -13,7 +15,7 @@ import { adminRouter } from './routes/admin.routes.js'
 const swaggerDocument = {
   openapi: '3.0.3',
   info: { title: 'Portfolio API', version: '1.0.0', description: 'Public portfolio and authenticated content management API.' },
-  servers: [{ url: `http://localhost:${env.PORT}` }],
+  servers: [{ url: '/' }],
   tags: [{ name: 'Public' }, { name: 'Authentication' }, { name: 'Admin' }],
   paths: {
     '/api/health': { get: { tags: ['Public'], summary: 'Check API and database health', responses: { '200': { description: 'Healthy' }, '503': { description: 'Database unavailable' } } } },
@@ -32,15 +34,33 @@ const swaggerDocument = {
 export const app = express()
 app.disable('x-powered-by')
 app.use(helmet())
-app.use(cors({ origin: env.FRONTEND_URL, credentials: false }))
-app.use(express.json({ limit: '1mb' }))
-app.use(rateLimit({ windowMs: 15 * 60 * 1000, limit: 100, standardHeaders: 'draft-7', legacyHeaders: false }))
+const allowedFrontendOrigins = new Set([
+  env.FRONTEND_URL,
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://10.230.49.216:5173',
+])
+app.use(cors({
+  origin: (origin, callback) => callback(null, !origin || allowedFrontendOrigins.has(origin)),
+  credentials: false,
+}))
+app.use('/api/admin/projects', requireAuth, express.json({ limit: '75mb' }))
+app.use('/api/admin/experience', requireAuth, express.json({ limit: '75mb' }))
+app.use(express.json({ limit: '8mb' }))
+app.use(rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 100,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  skip: (req) => req.path.startsWith('/api/admin'),
+}))
 
 app.get('/api/health', async (_req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`
     res.json({ status: 'ok', database: 'connected' })
-  } catch {
+  } catch (error) {
+    logger.error({ error }, 'Database health check failed')
     res.status(503).json({ status: 'error', database: 'unavailable' })
   }
 })

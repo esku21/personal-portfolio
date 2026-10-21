@@ -15,7 +15,8 @@ export interface Project {
   techStack: string[];
   githubUrl?: string;
   liveUrl?: string;
-  imageUrl?: string;
+  imageUrl?: string | null;
+  imageUrls?: string[];
   isPublished?: boolean;
   isFeatured?: boolean;
   createdAt?: string;
@@ -42,6 +43,13 @@ export interface Profile {
   avatarUrl?: string;
   githubUrl?: string;
   linkedinUrl?: string;
+  resumeUrl?: string;
+  aboutSubtitle?: string;
+  aboutTitle?: string;
+  aboutText?: string;
+  stats?: Array<{ value?: string | number; label?: string }>;
+  skills?: Array<{ category?: string; items?: string[] }>;
+  principles?: Array<{ title?: string; description?: string }>;
 }
 
 export interface Skill {
@@ -49,6 +57,8 @@ export interface Skill {
   name: string;
   category: string;
   level: number; // 0 - 100
+  imageUrl?: string | null;
+  isPublished?: boolean;
 }
 
 export interface Experience {
@@ -59,7 +69,9 @@ export interface Experience {
   startDate: string;
   endDate?: string | null;
   description: string;
+  imageUrls?: string[];
   current?: boolean;
+  isPublished?: boolean;
 }
 
 export interface Education {
@@ -70,6 +82,7 @@ export interface Education {
   startDate: string;
   endDate?: string | null;
   description: string;
+  isPublished?: boolean;
 }
 
 export interface Certification {
@@ -78,7 +91,8 @@ export interface Certification {
   issuer: string;
   issueDate?: string;
   credentialUrl?: string;
-  credentialId?: string;
+  imageUrl?: string;
+  isPublished?: boolean;
 }
 
 export interface Service {
@@ -86,12 +100,14 @@ export interface Service {
   title: string;
   description: string;
   icon: string; // 'LayoutTemplate' | 'Layers3' | 'Compass' | 'Code' | 'Server' | etc.
+  isPublished?: boolean;
 }
 
 export interface ContactMessage {
   id: string;
   name: string;
   email: string;
+  phone: string;
   subject: string;
   message: string;
   status: 'unread' | 'read' | 'archived';
@@ -107,6 +123,54 @@ export interface Stats {
   experiences: number;
   educations: number;
   services: number;
+}
+
+export interface PortfolioReport {
+  generatedAt: string;
+  totals: {
+    projects: number;
+    publishedProjects: number;
+    draftProjects: number;
+    featuredProjects: number;
+    skills: number;
+    experience: number;
+    education: number;
+    services: number;
+    certifications: number;
+    messages: number;
+    unreadMessages: number;
+    admins: number;
+    profiles: number;
+  };
+  distributions: {
+    skillCategories: Array<{ name: string; count: number }>;
+    serviceTypes: Array<{ name: string; count: number }>;
+    experienceOrganizations: Array<{ name: string; count: number }>;
+    educationQualifications: Array<{ name: string; count: number }>;
+  };
+  period: {
+    projectsCreated: { current: number; previous: number | null };
+    messagesReceived: { current: number; previous: number | null };
+  };
+  activity: {
+    bucket: 'day' | 'month';
+    events: Array<{ label: string; projects: number; messages: number }>;
+  };
+  recentProjects: Array<{
+    id: string;
+    title: string;
+    slug: string;
+    isPublished: boolean;
+    isFeatured: boolean;
+    createdAt: string;
+    updatedAt: string;
+  }>;
+  dataQuality: {
+    recordsWithoutCreationTimestamps: number;
+    recordTypesWithoutCreationTimestamps: string[];
+    projectCompletionStatusAvailable: boolean;
+    experienceDurationReliable: boolean;
+  };
 }
 
 export interface Portfolio {

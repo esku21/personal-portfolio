@@ -95,6 +95,7 @@ CREATE TABLE "Certification" (
     "issuer" TEXT NOT NULL,
     "issueDate" TEXT,
     "credentialUrl" TEXT,
+    "imageUrl" TEXT,
     "sortOrder" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "Certification_pkey" PRIMARY KEY ("id")

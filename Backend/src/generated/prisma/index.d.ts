@@ -2654,6 +2654,8 @@ export namespace Prisma {
     email: string | null
     githubUrl: string | null
     linkedinUrl: string | null
+    avatarUrl: string | null
+    resumeUrl: string | null
     availability: string | null
     aboutTitle: string | null
     aboutText: string | null
@@ -2670,6 +2672,8 @@ export namespace Prisma {
     email: string | null
     githubUrl: string | null
     linkedinUrl: string | null
+    avatarUrl: string | null
+    resumeUrl: string | null
     availability: string | null
     aboutTitle: string | null
     aboutText: string | null
@@ -2686,6 +2690,8 @@ export namespace Prisma {
     email: number
     githubUrl: number
     linkedinUrl: number
+    avatarUrl: number
+    resumeUrl: number
     availability: number
     aboutTitle: number
     aboutText: number
@@ -2704,6 +2710,8 @@ export namespace Prisma {
     email?: true
     githubUrl?: true
     linkedinUrl?: true
+    avatarUrl?: true
+    resumeUrl?: true
     availability?: true
     aboutTitle?: true
     aboutText?: true
@@ -2720,6 +2728,8 @@ export namespace Prisma {
     email?: true
     githubUrl?: true
     linkedinUrl?: true
+    avatarUrl?: true
+    resumeUrl?: true
     availability?: true
     aboutTitle?: true
     aboutText?: true
@@ -2736,6 +2746,8 @@ export namespace Prisma {
     email?: true
     githubUrl?: true
     linkedinUrl?: true
+    avatarUrl?: true
+    resumeUrl?: true
     availability?: true
     aboutTitle?: true
     aboutText?: true
@@ -2825,6 +2837,8 @@ export namespace Prisma {
     email: string
     githubUrl: string | null
     linkedinUrl: string | null
+    avatarUrl: string | null
+    resumeUrl: string | null
     availability: string | null
     aboutTitle: string | null
     aboutText: string | null
@@ -2858,6 +2872,8 @@ export namespace Prisma {
     email?: boolean
     githubUrl?: boolean
     linkedinUrl?: boolean
+    avatarUrl?: boolean
+    resumeUrl?: boolean
     availability?: boolean
     aboutTitle?: boolean
     aboutText?: boolean
@@ -2874,6 +2890,8 @@ export namespace Prisma {
     email?: boolean
     githubUrl?: boolean
     linkedinUrl?: boolean
+    avatarUrl?: boolean
+    resumeUrl?: boolean
     availability?: boolean
     aboutTitle?: boolean
     aboutText?: boolean
@@ -2890,6 +2908,8 @@ export namespace Prisma {
     email?: boolean
     githubUrl?: boolean
     linkedinUrl?: boolean
+    avatarUrl?: boolean
+    resumeUrl?: boolean
     availability?: boolean
     aboutTitle?: boolean
     aboutText?: boolean
@@ -2906,6 +2926,8 @@ export namespace Prisma {
     email?: boolean
     githubUrl?: boolean
     linkedinUrl?: boolean
+    avatarUrl?: boolean
+    resumeUrl?: boolean
     availability?: boolean
     aboutTitle?: boolean
     aboutText?: boolean
@@ -2913,7 +2935,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "role" | "bio" | "location" | "email" | "githubUrl" | "linkedinUrl" | "availability" | "aboutTitle" | "aboutText" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "role" | "bio" | "location" | "email" | "githubUrl" | "linkedinUrl" | "avatarUrl" | "resumeUrl" | "availability" | "aboutTitle" | "aboutText" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
 
   export type $ProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Profile"
@@ -2927,6 +2949,8 @@ export namespace Prisma {
       email: string
       githubUrl: string | null
       linkedinUrl: string | null
+      avatarUrl: string | null
+      resumeUrl: string | null
       availability: string | null
       aboutTitle: string | null
       aboutText: string | null
@@ -3363,6 +3387,8 @@ export namespace Prisma {
     readonly email: FieldRef<"Profile", 'String'>
     readonly githubUrl: FieldRef<"Profile", 'String'>
     readonly linkedinUrl: FieldRef<"Profile", 'String'>
+    readonly avatarUrl: FieldRef<"Profile", 'String'>
+    readonly resumeUrl: FieldRef<"Profile", 'String'>
     readonly availability: FieldRef<"Profile", 'String'>
     readonly aboutTitle: FieldRef<"Profile", 'String'>
     readonly aboutText: FieldRef<"Profile", 'String'>
@@ -3792,6 +3818,7 @@ export namespace Prisma {
     githubUrl: number
     liveUrl: number
     imageUrl: number
+    imageUrls: number
     isPublished: number
     isFeatured: number
     createdAt: number
@@ -3843,6 +3870,7 @@ export namespace Prisma {
     githubUrl?: true
     liveUrl?: true
     imageUrl?: true
+    imageUrls?: true
     isPublished?: true
     isFeatured?: true
     createdAt?: true
@@ -3933,6 +3961,7 @@ export namespace Prisma {
     githubUrl: string | null
     liveUrl: string | null
     imageUrl: string | null
+    imageUrls: string[]
     isPublished: boolean
     isFeatured: boolean
     createdAt: Date
@@ -3967,6 +3996,7 @@ export namespace Prisma {
     githubUrl?: boolean
     liveUrl?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     isPublished?: boolean
     isFeatured?: boolean
     createdAt?: boolean
@@ -3984,6 +4014,7 @@ export namespace Prisma {
     githubUrl?: boolean
     liveUrl?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     isPublished?: boolean
     isFeatured?: boolean
     createdAt?: boolean
@@ -4001,6 +4032,7 @@ export namespace Prisma {
     githubUrl?: boolean
     liveUrl?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     isPublished?: boolean
     isFeatured?: boolean
     createdAt?: boolean
@@ -4018,13 +4050,14 @@ export namespace Prisma {
     githubUrl?: boolean
     liveUrl?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     isPublished?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "acronym" | "description" | "details" | "techStack" | "githubUrl" | "liveUrl" | "imageUrl" | "isPublished" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "acronym" | "description" | "details" | "techStack" | "githubUrl" | "liveUrl" | "imageUrl" | "imageUrls" | "isPublished" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
 
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
@@ -4040,6 +4073,7 @@ export namespace Prisma {
       githubUrl: string | null
       liveUrl: string | null
       imageUrl: string | null
+      imageUrls: string[]
       isPublished: boolean
       isFeatured: boolean
       createdAt: Date
@@ -4477,6 +4511,7 @@ export namespace Prisma {
     readonly githubUrl: FieldRef<"Project", 'String'>
     readonly liveUrl: FieldRef<"Project", 'String'>
     readonly imageUrl: FieldRef<"Project", 'String'>
+    readonly imageUrls: FieldRef<"Project", 'String[]'>
     readonly isPublished: FieldRef<"Project", 'Boolean'>
     readonly isFeatured: FieldRef<"Project", 'Boolean'>
     readonly createdAt: FieldRef<"Project", 'DateTime'>
@@ -4879,6 +4914,8 @@ export namespace Prisma {
     name: string | null
     category: string | null
     level: number | null
+    imageUrl: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -4887,6 +4924,8 @@ export namespace Prisma {
     name: string | null
     category: string | null
     level: number | null
+    imageUrl: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -4895,6 +4934,8 @@ export namespace Prisma {
     name: number
     category: number
     level: number
+    imageUrl: number
+    isPublished: number
     sortOrder: number
     _all: number
   }
@@ -4915,6 +4956,8 @@ export namespace Prisma {
     name?: true
     category?: true
     level?: true
+    imageUrl?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -4923,6 +4966,8 @@ export namespace Prisma {
     name?: true
     category?: true
     level?: true
+    imageUrl?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -4931,6 +4976,8 @@ export namespace Prisma {
     name?: true
     category?: true
     level?: true
+    imageUrl?: true
+    isPublished?: true
     sortOrder?: true
     _all?: true
   }
@@ -5026,6 +5073,8 @@ export namespace Prisma {
     name: string
     category: string
     level: number
+    imageUrl: string | null
+    isPublished: boolean
     sortOrder: number
     _count: SkillCountAggregateOutputType | null
     _avg: SkillAvgAggregateOutputType | null
@@ -5053,6 +5102,8 @@ export namespace Prisma {
     name?: boolean
     category?: boolean
     level?: boolean
+    imageUrl?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["skill"]>
 
@@ -5061,6 +5112,8 @@ export namespace Prisma {
     name?: boolean
     category?: boolean
     level?: boolean
+    imageUrl?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["skill"]>
 
@@ -5069,6 +5122,8 @@ export namespace Prisma {
     name?: boolean
     category?: boolean
     level?: boolean
+    imageUrl?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["skill"]>
 
@@ -5077,10 +5132,12 @@ export namespace Prisma {
     name?: boolean
     category?: boolean
     level?: boolean
+    imageUrl?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }
 
-  export type SkillOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "level" | "sortOrder", ExtArgs["result"]["skill"]>
+  export type SkillOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "category" | "level" | "imageUrl" | "isPublished" | "sortOrder", ExtArgs["result"]["skill"]>
 
   export type $SkillPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Skill"
@@ -5090,6 +5147,8 @@ export namespace Prisma {
       name: string
       category: string
       level: number
+      imageUrl: string | null
+      isPublished: boolean
       sortOrder: number
     }, ExtArgs["result"]["skill"]>
     composites: {}
@@ -5518,6 +5577,8 @@ export namespace Prisma {
     readonly name: FieldRef<"Skill", 'String'>
     readonly category: FieldRef<"Skill", 'String'>
     readonly level: FieldRef<"Skill", 'Int'>
+    readonly imageUrl: FieldRef<"Skill", 'String'>
+    readonly isPublished: FieldRef<"Skill", 'Boolean'>
     readonly sortOrder: FieldRef<"Skill", 'Int'>
   }
     
@@ -5918,6 +5979,7 @@ export namespace Prisma {
     startDate: string | null
     endDate: string | null
     description: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -5929,6 +5991,7 @@ export namespace Prisma {
     startDate: string | null
     endDate: string | null
     description: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -5940,6 +6003,8 @@ export namespace Prisma {
     startDate: number
     endDate: number
     description: number
+    imageUrls: number
+    isPublished: number
     sortOrder: number
     _all: number
   }
@@ -5961,6 +6026,7 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     description?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -5972,6 +6038,7 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     description?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -5983,6 +6050,8 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     description?: true
+    imageUrls?: true
+    isPublished?: true
     sortOrder?: true
     _all?: true
   }
@@ -6081,6 +6150,8 @@ export namespace Prisma {
     startDate: string
     endDate: string | null
     description: string
+    imageUrls: string[]
+    isPublished: boolean
     sortOrder: number
     _count: ExperienceCountAggregateOutputType | null
     _avg: ExperienceAvgAggregateOutputType | null
@@ -6111,6 +6182,8 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    imageUrls?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["experience"]>
 
@@ -6122,6 +6195,8 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    imageUrls?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["experience"]>
 
@@ -6133,6 +6208,8 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    imageUrls?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["experience"]>
 
@@ -6144,10 +6221,12 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    imageUrls?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }
 
-  export type ExperienceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "role" | "company" | "location" | "startDate" | "endDate" | "description" | "sortOrder", ExtArgs["result"]["experience"]>
+  export type ExperienceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "role" | "company" | "location" | "startDate" | "endDate" | "description" | "imageUrls" | "isPublished" | "sortOrder", ExtArgs["result"]["experience"]>
 
   export type $ExperiencePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Experience"
@@ -6160,6 +6239,8 @@ export namespace Prisma {
       startDate: string
       endDate: string | null
       description: string
+      imageUrls: string[]
+      isPublished: boolean
       sortOrder: number
     }, ExtArgs["result"]["experience"]>
     composites: {}
@@ -6591,6 +6672,8 @@ export namespace Prisma {
     readonly startDate: FieldRef<"Experience", 'String'>
     readonly endDate: FieldRef<"Experience", 'String'>
     readonly description: FieldRef<"Experience", 'String'>
+    readonly imageUrls: FieldRef<"Experience", 'String[]'>
+    readonly isPublished: FieldRef<"Experience", 'Boolean'>
     readonly sortOrder: FieldRef<"Experience", 'Int'>
   }
     
@@ -6991,6 +7074,7 @@ export namespace Prisma {
     startDate: string | null
     endDate: string | null
     description: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -7002,6 +7086,7 @@ export namespace Prisma {
     startDate: string | null
     endDate: string | null
     description: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -7013,6 +7098,7 @@ export namespace Prisma {
     startDate: number
     endDate: number
     description: number
+    isPublished: number
     sortOrder: number
     _all: number
   }
@@ -7034,6 +7120,7 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     description?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -7045,6 +7132,7 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     description?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -7056,6 +7144,7 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     description?: true
+    isPublished?: true
     sortOrder?: true
     _all?: true
   }
@@ -7154,6 +7243,7 @@ export namespace Prisma {
     startDate: string
     endDate: string | null
     description: string | null
+    isPublished: boolean
     sortOrder: number
     _count: EducationCountAggregateOutputType | null
     _avg: EducationAvgAggregateOutputType | null
@@ -7184,6 +7274,7 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["education"]>
 
@@ -7195,6 +7286,7 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["education"]>
 
@@ -7206,6 +7298,7 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["education"]>
 
@@ -7217,10 +7310,11 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }
 
-  export type EducationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "institution" | "degree" | "location" | "startDate" | "endDate" | "description" | "sortOrder", ExtArgs["result"]["education"]>
+  export type EducationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "institution" | "degree" | "location" | "startDate" | "endDate" | "description" | "isPublished" | "sortOrder", ExtArgs["result"]["education"]>
 
   export type $EducationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Education"
@@ -7233,6 +7327,7 @@ export namespace Prisma {
       startDate: string
       endDate: string | null
       description: string | null
+      isPublished: boolean
       sortOrder: number
     }, ExtArgs["result"]["education"]>
     composites: {}
@@ -7664,6 +7759,7 @@ export namespace Prisma {
     readonly startDate: FieldRef<"Education", 'String'>
     readonly endDate: FieldRef<"Education", 'String'>
     readonly description: FieldRef<"Education", 'String'>
+    readonly isPublished: FieldRef<"Education", 'Boolean'>
     readonly sortOrder: FieldRef<"Education", 'Int'>
   }
     
@@ -8062,6 +8158,8 @@ export namespace Prisma {
     issuer: string | null
     issueDate: string | null
     credentialUrl: string | null
+    imageUrl: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -8071,6 +8169,8 @@ export namespace Prisma {
     issuer: string | null
     issueDate: string | null
     credentialUrl: string | null
+    imageUrl: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -8080,6 +8180,8 @@ export namespace Prisma {
     issuer: number
     issueDate: number
     credentialUrl: number
+    imageUrl: number
+    isPublished: number
     sortOrder: number
     _all: number
   }
@@ -8099,6 +8201,8 @@ export namespace Prisma {
     issuer?: true
     issueDate?: true
     credentialUrl?: true
+    imageUrl?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -8108,6 +8212,8 @@ export namespace Prisma {
     issuer?: true
     issueDate?: true
     credentialUrl?: true
+    imageUrl?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -8117,6 +8223,8 @@ export namespace Prisma {
     issuer?: true
     issueDate?: true
     credentialUrl?: true
+    imageUrl?: true
+    isPublished?: true
     sortOrder?: true
     _all?: true
   }
@@ -8213,6 +8321,8 @@ export namespace Prisma {
     issuer: string
     issueDate: string | null
     credentialUrl: string | null
+    imageUrl: string | null
+    isPublished: boolean
     sortOrder: number
     _count: CertificationCountAggregateOutputType | null
     _avg: CertificationAvgAggregateOutputType | null
@@ -8241,6 +8351,8 @@ export namespace Prisma {
     issuer?: boolean
     issueDate?: boolean
     credentialUrl?: boolean
+    imageUrl?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["certification"]>
 
@@ -8250,6 +8362,8 @@ export namespace Prisma {
     issuer?: boolean
     issueDate?: boolean
     credentialUrl?: boolean
+    imageUrl?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["certification"]>
 
@@ -8259,6 +8373,8 @@ export namespace Prisma {
     issuer?: boolean
     issueDate?: boolean
     credentialUrl?: boolean
+    imageUrl?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["certification"]>
 
@@ -8268,10 +8384,12 @@ export namespace Prisma {
     issuer?: boolean
     issueDate?: boolean
     credentialUrl?: boolean
+    imageUrl?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }
 
-  export type CertificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "issuer" | "issueDate" | "credentialUrl" | "sortOrder", ExtArgs["result"]["certification"]>
+  export type CertificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "issuer" | "issueDate" | "credentialUrl" | "imageUrl" | "isPublished" | "sortOrder", ExtArgs["result"]["certification"]>
 
   export type $CertificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Certification"
@@ -8282,6 +8400,8 @@ export namespace Prisma {
       issuer: string
       issueDate: string | null
       credentialUrl: string | null
+      imageUrl: string | null
+      isPublished: boolean
       sortOrder: number
     }, ExtArgs["result"]["certification"]>
     composites: {}
@@ -8711,6 +8831,8 @@ export namespace Prisma {
     readonly issuer: FieldRef<"Certification", 'String'>
     readonly issueDate: FieldRef<"Certification", 'String'>
     readonly credentialUrl: FieldRef<"Certification", 'String'>
+    readonly imageUrl: FieldRef<"Certification", 'String'>
+    readonly isPublished: FieldRef<"Certification", 'Boolean'>
     readonly sortOrder: FieldRef<"Certification", 'Int'>
   }
     
@@ -9108,6 +9230,7 @@ export namespace Prisma {
     title: string | null
     description: string | null
     icon: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -9116,6 +9239,7 @@ export namespace Prisma {
     title: string | null
     description: string | null
     icon: string | null
+    isPublished: boolean | null
     sortOrder: number | null
   }
 
@@ -9124,6 +9248,7 @@ export namespace Prisma {
     title: number
     description: number
     icon: number
+    isPublished: number
     sortOrder: number
     _all: number
   }
@@ -9142,6 +9267,7 @@ export namespace Prisma {
     title?: true
     description?: true
     icon?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -9150,6 +9276,7 @@ export namespace Prisma {
     title?: true
     description?: true
     icon?: true
+    isPublished?: true
     sortOrder?: true
   }
 
@@ -9158,6 +9285,7 @@ export namespace Prisma {
     title?: true
     description?: true
     icon?: true
+    isPublished?: true
     sortOrder?: true
     _all?: true
   }
@@ -9253,6 +9381,7 @@ export namespace Prisma {
     title: string
     description: string
     icon: string
+    isPublished: boolean
     sortOrder: number
     _count: ServiceCountAggregateOutputType | null
     _avg: ServiceAvgAggregateOutputType | null
@@ -9280,6 +9409,7 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     icon?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["service"]>
 
@@ -9288,6 +9418,7 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     icon?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["service"]>
 
@@ -9296,6 +9427,7 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     icon?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }, ExtArgs["result"]["service"]>
 
@@ -9304,10 +9436,11 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     icon?: boolean
+    isPublished?: boolean
     sortOrder?: boolean
   }
 
-  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "icon" | "sortOrder", ExtArgs["result"]["service"]>
+  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "icon" | "isPublished" | "sortOrder", ExtArgs["result"]["service"]>
 
   export type $ServicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Service"
@@ -9317,6 +9450,7 @@ export namespace Prisma {
       title: string
       description: string
       icon: string
+      isPublished: boolean
       sortOrder: number
     }, ExtArgs["result"]["service"]>
     composites: {}
@@ -9745,6 +9879,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Service", 'String'>
     readonly description: FieldRef<"Service", 'String'>
     readonly icon: FieldRef<"Service", 'String'>
+    readonly isPublished: FieldRef<"Service", 'Boolean'>
     readonly sortOrder: FieldRef<"Service", 'Int'>
   }
     
@@ -10131,6 +10266,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
+    phone: string | null
     subject: string | null
     message: string | null
     status: string | null
@@ -10142,6 +10278,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
+    phone: string | null
     subject: string | null
     message: string | null
     status: string | null
@@ -10153,6 +10290,7 @@ export namespace Prisma {
     id: number
     name: number
     email: number
+    phone: number
     subject: number
     message: number
     status: number
@@ -10166,6 +10304,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    phone?: true
     subject?: true
     message?: true
     status?: true
@@ -10177,6 +10316,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    phone?: true
     subject?: true
     message?: true
     status?: true
@@ -10188,6 +10328,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    phone?: true
     subject?: true
     message?: true
     status?: true
@@ -10272,6 +10413,7 @@ export namespace Prisma {
     id: string
     name: string
     email: string
+    phone: string
     subject: string
     message: string
     status: string
@@ -10300,6 +10442,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    phone?: boolean
     subject?: boolean
     message?: boolean
     status?: boolean
@@ -10311,6 +10454,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    phone?: boolean
     subject?: boolean
     message?: boolean
     status?: boolean
@@ -10322,6 +10466,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    phone?: boolean
     subject?: boolean
     message?: boolean
     status?: boolean
@@ -10333,6 +10478,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    phone?: boolean
     subject?: boolean
     message?: boolean
     status?: boolean
@@ -10340,7 +10486,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ContactMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "subject" | "message" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["contactMessage"]>
+  export type ContactMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "subject" | "message" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["contactMessage"]>
 
   export type $ContactMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ContactMessage"
@@ -10349,6 +10495,7 @@ export namespace Prisma {
       id: string
       name: string
       email: string
+      phone: string
       subject: string
       message: string
       status: string
@@ -10780,6 +10927,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ContactMessage", 'String'>
     readonly name: FieldRef<"ContactMessage", 'String'>
     readonly email: FieldRef<"ContactMessage", 'String'>
+    readonly phone: FieldRef<"ContactMessage", 'String'>
     readonly subject: FieldRef<"ContactMessage", 'String'>
     readonly message: FieldRef<"ContactMessage", 'String'>
     readonly status: FieldRef<"ContactMessage", 'String'>
@@ -11191,6 +11339,8 @@ export namespace Prisma {
     email: 'email',
     githubUrl: 'githubUrl',
     linkedinUrl: 'linkedinUrl',
+    avatarUrl: 'avatarUrl',
+    resumeUrl: 'resumeUrl',
     availability: 'availability',
     aboutTitle: 'aboutTitle',
     aboutText: 'aboutText',
@@ -11212,6 +11362,7 @@ export namespace Prisma {
     githubUrl: 'githubUrl',
     liveUrl: 'liveUrl',
     imageUrl: 'imageUrl',
+    imageUrls: 'imageUrls',
     isPublished: 'isPublished',
     isFeatured: 'isFeatured',
     createdAt: 'createdAt',
@@ -11226,6 +11377,8 @@ export namespace Prisma {
     name: 'name',
     category: 'category',
     level: 'level',
+    imageUrl: 'imageUrl',
+    isPublished: 'isPublished',
     sortOrder: 'sortOrder'
   };
 
@@ -11240,6 +11393,8 @@ export namespace Prisma {
     startDate: 'startDate',
     endDate: 'endDate',
     description: 'description',
+    imageUrls: 'imageUrls',
+    isPublished: 'isPublished',
     sortOrder: 'sortOrder'
   };
 
@@ -11254,6 +11409,7 @@ export namespace Prisma {
     startDate: 'startDate',
     endDate: 'endDate',
     description: 'description',
+    isPublished: 'isPublished',
     sortOrder: 'sortOrder'
   };
 
@@ -11266,6 +11422,8 @@ export namespace Prisma {
     issuer: 'issuer',
     issueDate: 'issueDate',
     credentialUrl: 'credentialUrl',
+    imageUrl: 'imageUrl',
+    isPublished: 'isPublished',
     sortOrder: 'sortOrder'
   };
 
@@ -11277,6 +11435,7 @@ export namespace Prisma {
     title: 'title',
     description: 'description',
     icon: 'icon',
+    isPublished: 'isPublished',
     sortOrder: 'sortOrder'
   };
 
@@ -11287,6 +11446,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
+    phone: 'phone',
     subject: 'subject',
     message: 'message',
     status: 'status',
@@ -11461,6 +11621,8 @@ export namespace Prisma {
     email?: StringFilter<"Profile"> | string
     githubUrl?: StringNullableFilter<"Profile"> | string | null
     linkedinUrl?: StringNullableFilter<"Profile"> | string | null
+    avatarUrl?: StringNullableFilter<"Profile"> | string | null
+    resumeUrl?: StringNullableFilter<"Profile"> | string | null
     availability?: StringNullableFilter<"Profile"> | string | null
     aboutTitle?: StringNullableFilter<"Profile"> | string | null
     aboutText?: StringNullableFilter<"Profile"> | string | null
@@ -11477,6 +11639,8 @@ export namespace Prisma {
     email?: SortOrder
     githubUrl?: SortOrderInput | SortOrder
     linkedinUrl?: SortOrderInput | SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
+    resumeUrl?: SortOrderInput | SortOrder
     availability?: SortOrderInput | SortOrder
     aboutTitle?: SortOrderInput | SortOrder
     aboutText?: SortOrderInput | SortOrder
@@ -11496,6 +11660,8 @@ export namespace Prisma {
     email?: StringFilter<"Profile"> | string
     githubUrl?: StringNullableFilter<"Profile"> | string | null
     linkedinUrl?: StringNullableFilter<"Profile"> | string | null
+    avatarUrl?: StringNullableFilter<"Profile"> | string | null
+    resumeUrl?: StringNullableFilter<"Profile"> | string | null
     availability?: StringNullableFilter<"Profile"> | string | null
     aboutTitle?: StringNullableFilter<"Profile"> | string | null
     aboutText?: StringNullableFilter<"Profile"> | string | null
@@ -11512,6 +11678,8 @@ export namespace Prisma {
     email?: SortOrder
     githubUrl?: SortOrderInput | SortOrder
     linkedinUrl?: SortOrderInput | SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
+    resumeUrl?: SortOrderInput | SortOrder
     availability?: SortOrderInput | SortOrder
     aboutTitle?: SortOrderInput | SortOrder
     aboutText?: SortOrderInput | SortOrder
@@ -11534,6 +11702,8 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Profile"> | string
     githubUrl?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     linkedinUrl?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    avatarUrl?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    resumeUrl?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     availability?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     aboutTitle?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     aboutText?: StringNullableWithAggregatesFilter<"Profile"> | string | null
@@ -11555,6 +11725,7 @@ export namespace Prisma {
     githubUrl?: StringNullableFilter<"Project"> | string | null
     liveUrl?: StringNullableFilter<"Project"> | string | null
     imageUrl?: StringNullableFilter<"Project"> | string | null
+    imageUrls?: StringNullableListFilter<"Project">
     isPublished?: BoolFilter<"Project"> | boolean
     isFeatured?: BoolFilter<"Project"> | boolean
     createdAt?: DateTimeFilter<"Project"> | Date | string
@@ -11572,6 +11743,7 @@ export namespace Prisma {
     githubUrl?: SortOrderInput | SortOrder
     liveUrl?: SortOrderInput | SortOrder
     imageUrl?: SortOrderInput | SortOrder
+    imageUrls?: SortOrder
     isPublished?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
@@ -11592,6 +11764,7 @@ export namespace Prisma {
     githubUrl?: StringNullableFilter<"Project"> | string | null
     liveUrl?: StringNullableFilter<"Project"> | string | null
     imageUrl?: StringNullableFilter<"Project"> | string | null
+    imageUrls?: StringNullableListFilter<"Project">
     isPublished?: BoolFilter<"Project"> | boolean
     isFeatured?: BoolFilter<"Project"> | boolean
     createdAt?: DateTimeFilter<"Project"> | Date | string
@@ -11609,6 +11782,7 @@ export namespace Prisma {
     githubUrl?: SortOrderInput | SortOrder
     liveUrl?: SortOrderInput | SortOrder
     imageUrl?: SortOrderInput | SortOrder
+    imageUrls?: SortOrder
     isPublished?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
@@ -11632,6 +11806,7 @@ export namespace Prisma {
     githubUrl?: StringNullableWithAggregatesFilter<"Project"> | string | null
     liveUrl?: StringNullableWithAggregatesFilter<"Project"> | string | null
     imageUrl?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    imageUrls?: StringNullableListFilter<"Project">
     isPublished?: BoolWithAggregatesFilter<"Project"> | boolean
     isFeatured?: BoolWithAggregatesFilter<"Project"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
@@ -11646,6 +11821,8 @@ export namespace Prisma {
     name?: StringFilter<"Skill"> | string
     category?: StringFilter<"Skill"> | string
     level?: IntFilter<"Skill"> | number
+    imageUrl?: StringNullableFilter<"Skill"> | string | null
+    isPublished?: BoolFilter<"Skill"> | boolean
     sortOrder?: IntFilter<"Skill"> | number
   }
 
@@ -11654,6 +11831,8 @@ export namespace Prisma {
     name?: SortOrder
     category?: SortOrder
     level?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -11665,6 +11844,8 @@ export namespace Prisma {
     name?: StringFilter<"Skill"> | string
     category?: StringFilter<"Skill"> | string
     level?: IntFilter<"Skill"> | number
+    imageUrl?: StringNullableFilter<"Skill"> | string | null
+    isPublished?: BoolFilter<"Skill"> | boolean
     sortOrder?: IntFilter<"Skill"> | number
   }, "id">
 
@@ -11673,6 +11854,8 @@ export namespace Prisma {
     name?: SortOrder
     category?: SortOrder
     level?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
     _count?: SkillCountOrderByAggregateInput
     _avg?: SkillAvgOrderByAggregateInput
@@ -11689,6 +11872,8 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Skill"> | string
     category?: StringWithAggregatesFilter<"Skill"> | string
     level?: IntWithAggregatesFilter<"Skill"> | number
+    imageUrl?: StringNullableWithAggregatesFilter<"Skill"> | string | null
+    isPublished?: BoolWithAggregatesFilter<"Skill"> | boolean
     sortOrder?: IntWithAggregatesFilter<"Skill"> | number
   }
 
@@ -11703,6 +11888,8 @@ export namespace Prisma {
     startDate?: StringFilter<"Experience"> | string
     endDate?: StringNullableFilter<"Experience"> | string | null
     description?: StringFilter<"Experience"> | string
+    imageUrls?: StringNullableListFilter<"Experience">
+    isPublished?: BoolFilter<"Experience"> | boolean
     sortOrder?: IntFilter<"Experience"> | number
   }
 
@@ -11714,6 +11901,8 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
     description?: SortOrder
+    imageUrls?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -11728,6 +11917,8 @@ export namespace Prisma {
     startDate?: StringFilter<"Experience"> | string
     endDate?: StringNullableFilter<"Experience"> | string | null
     description?: StringFilter<"Experience"> | string
+    imageUrls?: StringNullableListFilter<"Experience">
+    isPublished?: BoolFilter<"Experience"> | boolean
     sortOrder?: IntFilter<"Experience"> | number
   }, "id">
 
@@ -11739,6 +11930,8 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
     description?: SortOrder
+    imageUrls?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
     _count?: ExperienceCountOrderByAggregateInput
     _avg?: ExperienceAvgOrderByAggregateInput
@@ -11758,6 +11951,8 @@ export namespace Prisma {
     startDate?: StringWithAggregatesFilter<"Experience"> | string
     endDate?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     description?: StringWithAggregatesFilter<"Experience"> | string
+    imageUrls?: StringNullableListFilter<"Experience">
+    isPublished?: BoolWithAggregatesFilter<"Experience"> | boolean
     sortOrder?: IntWithAggregatesFilter<"Experience"> | number
   }
 
@@ -11772,6 +11967,7 @@ export namespace Prisma {
     startDate?: StringFilter<"Education"> | string
     endDate?: StringNullableFilter<"Education"> | string | null
     description?: StringNullableFilter<"Education"> | string | null
+    isPublished?: BoolFilter<"Education"> | boolean
     sortOrder?: IntFilter<"Education"> | number
   }
 
@@ -11783,6 +11979,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -11797,6 +11994,7 @@ export namespace Prisma {
     startDate?: StringFilter<"Education"> | string
     endDate?: StringNullableFilter<"Education"> | string | null
     description?: StringNullableFilter<"Education"> | string | null
+    isPublished?: BoolFilter<"Education"> | boolean
     sortOrder?: IntFilter<"Education"> | number
   }, "id">
 
@@ -11808,6 +12006,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
     _count?: EducationCountOrderByAggregateInput
     _avg?: EducationAvgOrderByAggregateInput
@@ -11827,6 +12026,7 @@ export namespace Prisma {
     startDate?: StringWithAggregatesFilter<"Education"> | string
     endDate?: StringNullableWithAggregatesFilter<"Education"> | string | null
     description?: StringNullableWithAggregatesFilter<"Education"> | string | null
+    isPublished?: BoolWithAggregatesFilter<"Education"> | boolean
     sortOrder?: IntWithAggregatesFilter<"Education"> | number
   }
 
@@ -11839,6 +12039,8 @@ export namespace Prisma {
     issuer?: StringFilter<"Certification"> | string
     issueDate?: StringNullableFilter<"Certification"> | string | null
     credentialUrl?: StringNullableFilter<"Certification"> | string | null
+    imageUrl?: StringNullableFilter<"Certification"> | string | null
+    isPublished?: BoolFilter<"Certification"> | boolean
     sortOrder?: IntFilter<"Certification"> | number
   }
 
@@ -11848,6 +12050,8 @@ export namespace Prisma {
     issuer?: SortOrder
     issueDate?: SortOrderInput | SortOrder
     credentialUrl?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -11860,6 +12064,8 @@ export namespace Prisma {
     issuer?: StringFilter<"Certification"> | string
     issueDate?: StringNullableFilter<"Certification"> | string | null
     credentialUrl?: StringNullableFilter<"Certification"> | string | null
+    imageUrl?: StringNullableFilter<"Certification"> | string | null
+    isPublished?: BoolFilter<"Certification"> | boolean
     sortOrder?: IntFilter<"Certification"> | number
   }, "id">
 
@@ -11869,6 +12075,8 @@ export namespace Prisma {
     issuer?: SortOrder
     issueDate?: SortOrderInput | SortOrder
     credentialUrl?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
     _count?: CertificationCountOrderByAggregateInput
     _avg?: CertificationAvgOrderByAggregateInput
@@ -11886,6 +12094,8 @@ export namespace Prisma {
     issuer?: StringWithAggregatesFilter<"Certification"> | string
     issueDate?: StringNullableWithAggregatesFilter<"Certification"> | string | null
     credentialUrl?: StringNullableWithAggregatesFilter<"Certification"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"Certification"> | string | null
+    isPublished?: BoolWithAggregatesFilter<"Certification"> | boolean
     sortOrder?: IntWithAggregatesFilter<"Certification"> | number
   }
 
@@ -11897,6 +12107,7 @@ export namespace Prisma {
     title?: StringFilter<"Service"> | string
     description?: StringFilter<"Service"> | string
     icon?: StringFilter<"Service"> | string
+    isPublished?: BoolFilter<"Service"> | boolean
     sortOrder?: IntFilter<"Service"> | number
   }
 
@@ -11905,6 +12116,7 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     icon?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -11916,6 +12128,7 @@ export namespace Prisma {
     title?: StringFilter<"Service"> | string
     description?: StringFilter<"Service"> | string
     icon?: StringFilter<"Service"> | string
+    isPublished?: BoolFilter<"Service"> | boolean
     sortOrder?: IntFilter<"Service"> | number
   }, "id">
 
@@ -11924,6 +12137,7 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     icon?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
     _count?: ServiceCountOrderByAggregateInput
     _avg?: ServiceAvgOrderByAggregateInput
@@ -11940,6 +12154,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Service"> | string
     description?: StringWithAggregatesFilter<"Service"> | string
     icon?: StringWithAggregatesFilter<"Service"> | string
+    isPublished?: BoolWithAggregatesFilter<"Service"> | boolean
     sortOrder?: IntWithAggregatesFilter<"Service"> | number
   }
 
@@ -11950,6 +12165,7 @@ export namespace Prisma {
     id?: StringFilter<"ContactMessage"> | string
     name?: StringFilter<"ContactMessage"> | string
     email?: StringFilter<"ContactMessage"> | string
+    phone?: StringFilter<"ContactMessage"> | string
     subject?: StringFilter<"ContactMessage"> | string
     message?: StringFilter<"ContactMessage"> | string
     status?: StringFilter<"ContactMessage"> | string
@@ -11961,6 +12177,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    phone?: SortOrder
     subject?: SortOrder
     message?: SortOrder
     status?: SortOrder
@@ -11975,6 +12192,7 @@ export namespace Prisma {
     NOT?: ContactMessageWhereInput | ContactMessageWhereInput[]
     name?: StringFilter<"ContactMessage"> | string
     email?: StringFilter<"ContactMessage"> | string
+    phone?: StringFilter<"ContactMessage"> | string
     subject?: StringFilter<"ContactMessage"> | string
     message?: StringFilter<"ContactMessage"> | string
     status?: StringFilter<"ContactMessage"> | string
@@ -11986,6 +12204,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    phone?: SortOrder
     subject?: SortOrder
     message?: SortOrder
     status?: SortOrder
@@ -12003,6 +12222,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"ContactMessage"> | string
     name?: StringWithAggregatesFilter<"ContactMessage"> | string
     email?: StringWithAggregatesFilter<"ContactMessage"> | string
+    phone?: StringWithAggregatesFilter<"ContactMessage"> | string
     subject?: StringWithAggregatesFilter<"ContactMessage"> | string
     message?: StringWithAggregatesFilter<"ContactMessage"> | string
     status?: StringWithAggregatesFilter<"ContactMessage"> | string
@@ -12082,6 +12302,8 @@ export namespace Prisma {
     email: string
     githubUrl?: string | null
     linkedinUrl?: string | null
+    avatarUrl?: string | null
+    resumeUrl?: string | null
     availability?: string | null
     aboutTitle?: string | null
     aboutText?: string | null
@@ -12098,6 +12320,8 @@ export namespace Prisma {
     email: string
     githubUrl?: string | null
     linkedinUrl?: string | null
+    avatarUrl?: string | null
+    resumeUrl?: string | null
     availability?: string | null
     aboutTitle?: string | null
     aboutText?: string | null
@@ -12114,6 +12338,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: NullableStringFieldUpdateOperationsInput | string | null
     aboutTitle?: NullableStringFieldUpdateOperationsInput | string | null
     aboutText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12130,6 +12356,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: NullableStringFieldUpdateOperationsInput | string | null
     aboutTitle?: NullableStringFieldUpdateOperationsInput | string | null
     aboutText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12146,6 +12374,8 @@ export namespace Prisma {
     email: string
     githubUrl?: string | null
     linkedinUrl?: string | null
+    avatarUrl?: string | null
+    resumeUrl?: string | null
     availability?: string | null
     aboutTitle?: string | null
     aboutText?: string | null
@@ -12162,6 +12392,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: NullableStringFieldUpdateOperationsInput | string | null
     aboutTitle?: NullableStringFieldUpdateOperationsInput | string | null
     aboutText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12178,6 +12410,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: NullableStringFieldUpdateOperationsInput | string | null
     aboutTitle?: NullableStringFieldUpdateOperationsInput | string | null
     aboutText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12196,6 +12430,7 @@ export namespace Prisma {
     githubUrl?: string | null
     liveUrl?: string | null
     imageUrl?: string | null
+    imageUrls?: ProjectCreateimageUrlsInput | string[]
     isPublished?: boolean
     isFeatured?: boolean
     createdAt?: Date | string
@@ -12213,6 +12448,7 @@ export namespace Prisma {
     githubUrl?: string | null
     liveUrl?: string | null
     imageUrl?: string | null
+    imageUrls?: ProjectCreateimageUrlsInput | string[]
     isPublished?: boolean
     isFeatured?: boolean
     createdAt?: Date | string
@@ -12230,6 +12466,7 @@ export namespace Prisma {
     githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
     liveUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrls?: ProjectUpdateimageUrlsInput | string[]
     isPublished?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12247,6 +12484,7 @@ export namespace Prisma {
     githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
     liveUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrls?: ProjectUpdateimageUrlsInput | string[]
     isPublished?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12264,6 +12502,7 @@ export namespace Prisma {
     githubUrl?: string | null
     liveUrl?: string | null
     imageUrl?: string | null
+    imageUrls?: ProjectCreateimageUrlsInput | string[]
     isPublished?: boolean
     isFeatured?: boolean
     createdAt?: Date | string
@@ -12281,6 +12520,7 @@ export namespace Prisma {
     githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
     liveUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrls?: ProjectUpdateimageUrlsInput | string[]
     isPublished?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12298,6 +12538,7 @@ export namespace Prisma {
     githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
     liveUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrls?: ProjectUpdateimageUrlsInput | string[]
     isPublished?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12309,6 +12550,8 @@ export namespace Prisma {
     name: string
     category: string
     level?: number
+    imageUrl?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12317,6 +12560,8 @@ export namespace Prisma {
     name: string
     category: string
     level?: number
+    imageUrl?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12325,6 +12570,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12333,6 +12580,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12341,6 +12590,8 @@ export namespace Prisma {
     name: string
     category: string
     level?: number
+    imageUrl?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12349,6 +12600,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12357,6 +12610,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12368,6 +12623,8 @@ export namespace Prisma {
     startDate: string
     endDate?: string | null
     description: string
+    imageUrls?: ExperienceCreateimageUrlsInput | string[]
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12379,6 +12636,8 @@ export namespace Prisma {
     startDate: string
     endDate?: string | null
     description: string
+    imageUrls?: ExperienceCreateimageUrlsInput | string[]
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12390,6 +12649,8 @@ export namespace Prisma {
     startDate?: StringFieldUpdateOperationsInput | string
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    imageUrls?: ExperienceUpdateimageUrlsInput | string[]
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12401,6 +12662,8 @@ export namespace Prisma {
     startDate?: StringFieldUpdateOperationsInput | string
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    imageUrls?: ExperienceUpdateimageUrlsInput | string[]
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12412,6 +12675,8 @@ export namespace Prisma {
     startDate: string
     endDate?: string | null
     description: string
+    imageUrls?: ExperienceCreateimageUrlsInput | string[]
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12423,6 +12688,8 @@ export namespace Prisma {
     startDate?: StringFieldUpdateOperationsInput | string
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    imageUrls?: ExperienceUpdateimageUrlsInput | string[]
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12434,6 +12701,8 @@ export namespace Prisma {
     startDate?: StringFieldUpdateOperationsInput | string
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     description?: StringFieldUpdateOperationsInput | string
+    imageUrls?: ExperienceUpdateimageUrlsInput | string[]
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12445,6 +12714,7 @@ export namespace Prisma {
     startDate: string
     endDate?: string | null
     description?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12456,6 +12726,7 @@ export namespace Prisma {
     startDate: string
     endDate?: string | null
     description?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12467,6 +12738,7 @@ export namespace Prisma {
     startDate?: StringFieldUpdateOperationsInput | string
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12478,6 +12750,7 @@ export namespace Prisma {
     startDate?: StringFieldUpdateOperationsInput | string
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12489,6 +12762,7 @@ export namespace Prisma {
     startDate: string
     endDate?: string | null
     description?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12500,6 +12774,7 @@ export namespace Prisma {
     startDate?: StringFieldUpdateOperationsInput | string
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12511,6 +12786,7 @@ export namespace Prisma {
     startDate?: StringFieldUpdateOperationsInput | string
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12520,6 +12796,8 @@ export namespace Prisma {
     issuer: string
     issueDate?: string | null
     credentialUrl?: string | null
+    imageUrl?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12529,6 +12807,8 @@ export namespace Prisma {
     issuer: string
     issueDate?: string | null
     credentialUrl?: string | null
+    imageUrl?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12538,6 +12818,8 @@ export namespace Prisma {
     issuer?: StringFieldUpdateOperationsInput | string
     issueDate?: NullableStringFieldUpdateOperationsInput | string | null
     credentialUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12547,6 +12829,8 @@ export namespace Prisma {
     issuer?: StringFieldUpdateOperationsInput | string
     issueDate?: NullableStringFieldUpdateOperationsInput | string | null
     credentialUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12556,6 +12840,8 @@ export namespace Prisma {
     issuer: string
     issueDate?: string | null
     credentialUrl?: string | null
+    imageUrl?: string | null
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12565,6 +12851,8 @@ export namespace Prisma {
     issuer?: StringFieldUpdateOperationsInput | string
     issueDate?: NullableStringFieldUpdateOperationsInput | string | null
     credentialUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12574,6 +12862,8 @@ export namespace Prisma {
     issuer?: StringFieldUpdateOperationsInput | string
     issueDate?: NullableStringFieldUpdateOperationsInput | string | null
     credentialUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12582,6 +12872,7 @@ export namespace Prisma {
     title: string
     description: string
     icon: string
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12590,6 +12881,7 @@ export namespace Prisma {
     title: string
     description: string
     icon: string
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12598,6 +12890,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     icon?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12606,6 +12899,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     icon?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12614,6 +12908,7 @@ export namespace Prisma {
     title: string
     description: string
     icon: string
+    isPublished?: boolean
     sortOrder?: number
   }
 
@@ -12622,6 +12917,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     icon?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12630,6 +12926,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     icon?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12637,6 +12934,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    phone: string
     subject: string
     message: string
     status?: string
@@ -12648,6 +12946,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    phone: string
     subject: string
     message: string
     status?: string
@@ -12659,6 +12958,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
@@ -12670,6 +12970,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
@@ -12681,6 +12982,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    phone: string
     subject: string
     message: string
     status?: string
@@ -12692,6 +12994,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
@@ -12703,6 +13006,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
     subject?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
@@ -12824,6 +13128,8 @@ export namespace Prisma {
     email?: SortOrder
     githubUrl?: SortOrder
     linkedinUrl?: SortOrder
+    avatarUrl?: SortOrder
+    resumeUrl?: SortOrder
     availability?: SortOrder
     aboutTitle?: SortOrder
     aboutText?: SortOrder
@@ -12840,6 +13146,8 @@ export namespace Prisma {
     email?: SortOrder
     githubUrl?: SortOrder
     linkedinUrl?: SortOrder
+    avatarUrl?: SortOrder
+    resumeUrl?: SortOrder
     availability?: SortOrder
     aboutTitle?: SortOrder
     aboutText?: SortOrder
@@ -12856,6 +13164,8 @@ export namespace Prisma {
     email?: SortOrder
     githubUrl?: SortOrder
     linkedinUrl?: SortOrder
+    avatarUrl?: SortOrder
+    resumeUrl?: SortOrder
     availability?: SortOrder
     aboutTitle?: SortOrder
     aboutText?: SortOrder
@@ -12905,6 +13215,7 @@ export namespace Prisma {
     githubUrl?: SortOrder
     liveUrl?: SortOrder
     imageUrl?: SortOrder
+    imageUrls?: SortOrder
     isPublished?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
@@ -12967,6 +13278,8 @@ export namespace Prisma {
     name?: SortOrder
     category?: SortOrder
     level?: SortOrder
+    imageUrl?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -12980,6 +13293,8 @@ export namespace Prisma {
     name?: SortOrder
     category?: SortOrder
     level?: SortOrder
+    imageUrl?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -12988,6 +13303,8 @@ export namespace Prisma {
     name?: SortOrder
     category?: SortOrder
     level?: SortOrder
+    imageUrl?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13020,6 +13337,8 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    imageUrls?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13035,6 +13354,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13046,6 +13366,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13061,6 +13382,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13076,6 +13398,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13087,6 +13410,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13100,6 +13424,8 @@ export namespace Prisma {
     issuer?: SortOrder
     issueDate?: SortOrder
     credentialUrl?: SortOrder
+    imageUrl?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13113,6 +13439,8 @@ export namespace Prisma {
     issuer?: SortOrder
     issueDate?: SortOrder
     credentialUrl?: SortOrder
+    imageUrl?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13122,6 +13450,8 @@ export namespace Prisma {
     issuer?: SortOrder
     issueDate?: SortOrder
     credentialUrl?: SortOrder
+    imageUrl?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13134,6 +13464,7 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     icon?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13146,6 +13477,7 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     icon?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13154,6 +13486,7 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     icon?: SortOrder
+    isPublished?: SortOrder
     sortOrder?: SortOrder
   }
 
@@ -13165,6 +13498,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    phone?: SortOrder
     subject?: SortOrder
     message?: SortOrder
     status?: SortOrder
@@ -13176,6 +13510,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    phone?: SortOrder
     subject?: SortOrder
     message?: SortOrder
     status?: SortOrder
@@ -13187,6 +13522,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    phone?: SortOrder
     subject?: SortOrder
     message?: SortOrder
     status?: SortOrder
@@ -13210,7 +13546,16 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type ProjectCreateimageUrlsInput = {
+    set: string[]
+  }
+
   export type ProjectUpdatetechStackInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type ProjectUpdateimageUrlsInput = {
     set?: string[]
     push?: string | string[]
   }
@@ -13225,6 +13570,15 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type ExperienceCreateimageUrlsInput = {
+    set: string[]
+  }
+
+  export type ExperienceUpdateimageUrlsInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {

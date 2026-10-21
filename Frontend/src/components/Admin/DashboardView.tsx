@@ -5,7 +5,6 @@ import {
   AlertCircle, 
   Plus, 
   ArrowUpRight, 
-  Database, 
   Award, 
   GraduationCap, 
   Building2, 
@@ -42,19 +41,15 @@ export function DashboardView({
   const recentProjects = projects.slice(0, 4)
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-300">
+    <div className="admin-workspace-page space-y-6 animate-in fade-in duration-300 sm:space-y-8">
       {/* Welcome Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-br from-[#0d5543] to-[#08362b] text-white shadow-lg shadow-[#0d5543]/15">
+      <div className="admin-dashboard-hero flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0d5543] to-[#08362b] text-white shadow-lg shadow-[#0d5543]/15">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 text-emerald-200 text-xs font-mono mb-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            PostgreSQL 18 · Portfolio_db
-          </div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
             Welcome back, {profile?.name?.split(' ')[0] || 'Admin'}
           </h1>
           <p className="text-emerald-100/80 text-xs sm:text-sm mt-1 max-w-xl">
-            Manage your digital portfolio content, review incoming client inquiries, and monitor your 10 PostgreSQL database tables in real-time.
+            Manage your portfolio, review incoming inquiries, and keep your work up to date.
           </p>
         </div>
 
@@ -75,10 +70,10 @@ export function DashboardView({
       </div>
 
       {/* KPI Stats Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-        <div 
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-6">
+        <button type="button"
           onClick={() => onNavigate('projects')}
-          className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 cursor-pointer hover:border-[#0d5543] dark:hover:border-[#2dd4bf] transition-all group"
+          className="w-full p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left hover:border-[#0d5543] dark:hover:border-[#2dd4bf] hover:shadow-md transition-all group"
         >
           <div className="flex items-center justify-between text-neutral-400 mb-2">
             <span className="text-xs font-medium">Projects</span>
@@ -90,11 +85,11 @@ export function DashboardView({
           <div className="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1 flex items-center gap-1">
             <CheckCircle2 size={11} /> {publishedCount} published
           </div>
-        </div>
+        </button>
 
-        <div 
+        <button type="button"
           onClick={() => onNavigate('contact-messages')}
-          className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 cursor-pointer hover:border-rose-500 transition-all group"
+          className="w-full p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left hover:border-rose-500 hover:shadow-md transition-all group"
         >
           <div className="flex items-center justify-between text-neutral-400 mb-2">
             <span className="text-xs font-medium">Messages</span>
@@ -106,71 +101,71 @@ export function DashboardView({
           <div className="text-[11px] text-rose-500 mt-1 flex items-center gap-1 font-medium">
             <AlertCircle size={11} /> {unreadMessages.length} unread
           </div>
-        </div>
+        </button>
 
-        <div 
+        <button type="button"
           onClick={() => onNavigate('skills')}
-          className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 cursor-pointer hover:border-[#0d5543] dark:hover:border-[#2dd4bf] transition-all group"
+          className="w-full p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left hover:border-[#0d5543] dark:hover:border-[#2dd4bf] hover:shadow-md transition-all group"
         >
           <div className="flex items-center justify-between text-neutral-400 mb-2">
             <span className="text-xs font-medium">Skills</span>
             <Cpu size={16} className="group-hover:text-[#0d5543] dark:group-hover:text-[#2dd4bf] transition-colors" />
           </div>
           <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-            {stats?.skills ?? 8}
+            {stats?.skills ?? 0}
           </div>
           <div className="text-[11px] text-neutral-500 mt-1">
             Proficiencies
           </div>
-        </div>
+        </button>
 
-        <div 
+        <button type="button"
           onClick={() => onNavigate('certifications')}
-          className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 cursor-pointer hover:border-[#0d5543] dark:hover:border-[#2dd4bf] transition-all group"
+          className="w-full p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left hover:border-[#0d5543] dark:hover:border-[#2dd4bf] hover:shadow-md transition-all group"
         >
           <div className="flex items-center justify-between text-neutral-400 mb-2">
             <span className="text-xs font-medium">Certifications</span>
             <Award size={16} className="group-hover:text-[#0d5543] dark:group-hover:text-[#2dd4bf] transition-colors" />
           </div>
           <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-            {stats?.certifications ?? 3}
+            {stats?.certifications ?? 0}
           </div>
           <div className="text-[11px] text-neutral-500 mt-1">
             Verified credentials
           </div>
-        </div>
+        </button>
 
-        <div 
+        <button type="button"
           onClick={() => onNavigate('experience')}
-          className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 cursor-pointer hover:border-[#0d5543] dark:hover:border-[#2dd4bf] transition-all group"
+          className="w-full p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left hover:border-[#0d5543] dark:hover:border-[#2dd4bf] hover:shadow-md transition-all group"
         >
           <div className="flex items-center justify-between text-neutral-400 mb-2">
             <span className="text-xs font-medium">Experience</span>
             <Building2 size={16} className="group-hover:text-[#0d5543] dark:group-hover:text-[#2dd4bf] transition-colors" />
           </div>
           <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-            {stats?.experiences ?? 3}
+            {stats?.experiences ?? 0}
           </div>
           <div className="text-[11px] text-neutral-500 mt-1">
             Career roles
           </div>
-        </div>
+        </button>
 
-        <div 
+        <button type="button"
           onClick={() => onNavigate('education')}
-          className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 cursor-pointer hover:border-[#0d5543] dark:hover:border-[#2dd4bf] transition-all group"
+          className="w-full p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left hover:border-[#0d5543] dark:hover:border-[#2dd4bf] hover:shadow-md transition-all group"
         >
           <div className="flex items-center justify-between text-neutral-400 mb-2">
             <span className="text-xs font-medium">Education</span>
             <GraduationCap size={16} className="group-hover:text-[#0d5543] dark:group-hover:text-[#2dd4bf] transition-colors" />
           </div>
           <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-            {stats?.educations ?? 2}
+            {stats?.educations ?? 0}
           </div>
           <div className="text-[11px] text-neutral-500 mt-1">
             Degrees
           </div>
-        </div>
+        </button>
       </div>
 
       {/* Two Column Grid: Projects Preview & Recent Inbound Messages */}
@@ -183,7 +178,7 @@ export function DashboardView({
                 Projects Overview
               </h2>
               <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                14-column PostgreSQL "Project" model records
+                Your latest portfolio work
               </p>
             </div>
             <button
@@ -265,10 +260,11 @@ export function DashboardView({
 
           <div className="space-y-3">
             {recentMessages.map((msg) => (
-              <div
+              <button
+                type="button"
                 key={msg.id}
                 onClick={() => onNavigate('contact-messages')}
-                className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+                className={`w-full p-3.5 rounded-xl border text-left transition-all hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0d5543]/40 ${
                   msg.status === 'unread'
                     ? 'border-rose-200 dark:border-rose-900/60 bg-rose-50/40 dark:bg-rose-950/20'
                     : 'border-neutral-100 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-neutral-950/40'
@@ -292,7 +288,7 @@ export function DashboardView({
                 <p className="text-[11px] text-neutral-500 dark:text-neutral-400 line-clamp-2 mt-1">
                   {msg.message}
                 </p>
-              </div>
+              </button>
             ))}
 
             {recentMessages.length === 0 && (
@@ -304,21 +300,20 @@ export function DashboardView({
         </div>
       </div>
 
-      {/* Database Schema Status Footnote */}
-      <div className="p-4 rounded-xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-neutral-600 dark:text-neutral-400">
-        <div className="flex items-center gap-2.5">
-          <Database size={16} className="text-[#0d5543] dark:text-[#2dd4bf] shrink-0" />
-          <span>
-            Connected to <strong>Portfolio_db</strong>: tables synchronized for <strong>Project, Message, Skill, Education, Experience, Certification, Service, Profile</strong>.
-          </span>
+      <section className="flex flex-col gap-3 rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/50 dark:bg-rose-950/20 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="text-xs font-semibold text-neutral-800 dark:text-neutral-200">Development tools</h2>
+          <p className="mt-1 max-w-2xl text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400">
+            Restore the portfolio to its initial sample content. This replaces the current records.
+          </p>
         </div>
         <button
           onClick={onResetSeed}
-          className="self-start sm:self-auto text-xs text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline"
+          className="inline-flex min-h-10 items-center justify-center self-start rounded-xl border border-rose-200 bg-white px-3 py-2 text-xs font-semibold text-rose-700 transition-colors hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/40 dark:border-rose-900 dark:bg-neutral-900 dark:text-rose-300 dark:hover:bg-rose-950/50 sm:self-auto"
         >
-          Reset Demo Sample Data
+          Restore sample data
         </button>
-      </div>
+      </section>
     </div>
   )
 }

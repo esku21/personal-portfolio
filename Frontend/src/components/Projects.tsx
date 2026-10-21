@@ -1,21 +1,108 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ArrowUpRight, 
   ExternalLink, 
   FolderGit2,
-  Sparkles
+  Sparkles,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react'
 import type { Project } from '../types'
-import { SectionHeading } from './SectionHeading'
 
 interface ProjectsProps {
   projects: Project[]
   loading?: boolean
+  onLoadSampleData?: () => void
 }
 
-export function Projects({ projects, loading = false }: ProjectsProps) {
+function ProjectImageCarousel({ project }: { project: Project }) {
+  const images = [...(project.imageUrls ?? [])]
+  if (project.imageUrl && !images.includes(project.imageUrl)) images.unshift(project.imageUrl)
+
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const activeIndex = images.length ? currentIndex % images.length : 0
+
+  useEffect(() => {
+    if (images.length < 2 || isPaused) return
+    const interval = window.setInterval(() => {
+      setCurrentIndex((index) => (index + 1) % images.length)
+    }, 5000)
+    return () => window.clearInterval(interval)
+  }, [images.length, isPaused])
+
+  const navigate = (direction: -1 | 1) => {
+    setCurrentIndex((index) => (index + direction + images.length) % images.length)
+  }
+
+  return (
+    <div
+      className="group/carousel relative h-full w-full overflow-hidden bg-neutral-100"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {images.length > 0 ? (
+        <>
+          <AnimatePresence initial={false} mode="wait">
+            <motion.img
+              key={`${activeIndex}-${images[activeIndex]}`}
+              src={images[activeIndex]}
+              alt={`${project.title} screenshot ${activeIndex + 1}`}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+              initial={{ opacity: 0, scale: 1.015 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.45, ease: 'easeInOut' }}
+            />
+          </AnimatePresence>
+          {images.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={() => navigate(-1)}
+                aria-label={`Previous ${project.title} image`}
+                className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/30 bg-black/45 p-2 text-white shadow-lg backdrop-blur-sm transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:opacity-0 sm:group-hover/carousel:opacity-100 sm:group-focus-within/carousel:opacity-100"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={() => navigate(1)}
+                aria-label={`Next ${project.title} image`}
+                className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/30 bg-black/45 p-2 text-white shadow-lg backdrop-blur-sm transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:opacity-0 sm:group-hover/carousel:opacity-100 sm:group-focus-within/carousel:opacity-100"
+              >
+                <ChevronRight size={20} />
+              </button>
+              <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/35 px-2.5 py-1.5 backdrop-blur-sm">
+                {images.map((image, index) => (
+                  <button
+                    key={`${index}-${image.slice(0, 32)}`}
+                    type="button"
+                    onClick={() => setCurrentIndex(index)}
+                    aria-label={`Show image ${index + 1} of ${images.length} for ${project.title}`}
+                    aria-current={index === activeIndex ? 'true' : undefined}
+                    className={`h-1.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                      index === activeIndex ? 'w-5 bg-white' : 'w-1.5 bg-white/60 hover:bg-white'
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </>
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200/60 text-neutral-400">
+          <FolderGit2 size={48} strokeWidth={1.2} />
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function Projects({ projects, loading = false, onLoadSampleData }: ProjectsProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
   const categories = [
@@ -47,24 +134,14 @@ export function Projects({ projects, loading = false }: ProjectsProps) {
   })
 
   return (
-    <section id="work" className="w-full py-20 sm:py-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <SectionHeading 
-              number="02" 
-              title="Selected Work" 
-              note="Enterprise systems & digital products shipped with purpose." 
-            />
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-neutral-900 tracking-tight mt-2">
-              Featured Engineering Projects.
-            </h2>
-            <p className="mt-3 text-neutral-600 max-w-2xl text-base sm:text-lg leading-relaxed">
-              Real-world administrative software, municipal asset management, financial analytics, and interactive productivity tools designed for speed, scale, and clarity.
-            </p>
-          </div>
+    <section id="projects" className="w-full py-20 sm:py-28">
+      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-10 2xl:px-12">
+        <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+          <h2 className="font-serif text-3xl font-medium tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl">
+            Projects
+          </h2>
 
-          <div className="flex items-center gap-1.5 p-1 bg-neutral-100/90 rounded-2xl border border-neutral-200/70 overflow-x-auto self-start md:self-auto max-w-full">
+          <div className="flex max-w-full items-center gap-1.5 overflow-x-auto self-start rounded-2xl border border-neutral-200/70 bg-neutral-100/90 p-1 sm:self-auto">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -83,15 +160,15 @@ export function Projects({ projects, loading = false }: ProjectsProps) {
         </div>
 
         {loading && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-pulse">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 animate-pulse">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-96 rounded-3xl bg-neutral-100 border border-neutral-200" />
+              <div key={i} className="h-[28rem] rounded-3xl bg-neutral-100 border border-neutral-200" />
             ))}
           </div>
         )}
 
         {!loading && (
-          <motion.div layout className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
+          <motion.div layout className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 2xl:gap-7">
             <AnimatePresence>
               {filteredProjects.map((project, index) => (
                 <motion.article
@@ -102,22 +179,11 @@ export function Projects({ projects, loading = false }: ProjectsProps) {
                   transition={{ duration: 0.35, delay: index * 0.06 }}
                   key={project.id}
                   id={`project-card-${project.slug}`}
-                  className="group relative flex flex-col bg-white rounded-3xl border border-neutral-200/95 overflow-hidden shadow-[0_2px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.08)] hover:border-[#0d5543]/30 transition-all duration-300"
+                  className="group relative flex min-w-0 cursor-pointer flex-col overflow-hidden rounded-3xl border border-neutral-200/95 bg-white shadow-[0_2px_20px_-4px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-[#0d5543]/30 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.08)]"
                 >
-                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-neutral-100 border-b border-neutral-100">
-                    {project.imageUrl ? (
-                      <img
-                        src={project.imageUrl}
-                        alt={project.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200/60 text-neutral-400">
-                        <FolderGit2 size={48} strokeWidth={1.2} />
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-neutral-100 bg-neutral-100">
+                    <ProjectImageCarousel project={project} />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-40" />
                     
                     <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                       <div className="flex items-center gap-2">
@@ -135,26 +201,31 @@ export function Projects({ projects, loading = false }: ProjectsProps) {
                     </div>
                   </div>
 
-                  <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                  <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-serif font-semibold text-neutral-900 group-hover:text-[#0d5543] transition-colors leading-tight">
+                    <h3 className="text-xl font-serif font-semibold leading-tight text-neutral-900 transition-colors group-hover:text-[#0d5543] 2xl:text-2xl">
                         <Link to={`/projects/${project.slug}`}>{project.title}</Link>
                       </h3>
-                      <p className="text-sm text-neutral-600 leading-relaxed mt-2 line-clamp-3">
+                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-neutral-600">
                         {project.description}
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-5 border-t border-neutral-100/80 flex flex-col gap-4">
+                  <div className="mt-5 flex flex-col gap-4 border-t border-neutral-100/80 pt-4">
                       <div className="flex flex-wrap gap-1.5">
-                        {project.techStack.map((tech) => (
+                      {project.techStack.slice(0, 5).map((tech) => (
                           <span key={tech} className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-neutral-100/80 text-neutral-700 border border-neutral-200/50">
                             {tech}
                           </span>
                         ))}
-                      </div>
+                      {project.techStack.length > 5 && (
+                        <span className="rounded-md border border-neutral-200/50 bg-neutral-100/80 px-2.5 py-1 text-[11px] font-medium text-neutral-500">
+                          +{project.techStack.length - 5}
+                        </span>
+                      )}
+                    </div>
                       <div className="flex items-center justify-between pt-1">
-                        <Link to={`/projects/${project.slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0d5543] hover:text-[#093c30] transition-colors">
+                        <Link to={`/projects/${project.slug}`} className="inline-flex min-h-11 items-center gap-1.5 rounded-lg bg-[#0d5543]/10 px-3 text-sm font-semibold text-[#0d5543] transition-colors hover:bg-[#0d5543]/15 hover:text-[#093c30] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0d5543]/50 focus-visible:ring-offset-2">
                           <span>Case Study & Details</span>
                           <ArrowUpRight size={16} />
                         </Link>
@@ -196,9 +267,16 @@ export function Projects({ projects, loading = false }: ProjectsProps) {
         {!loading && filteredProjects.length === 0 && (
           <div className="text-center py-16 bg-white rounded-3xl border border-neutral-200/80 p-8">
             <p className="text-neutral-500 text-sm">No projects found in this category.</p>
-            <button type="button" onClick={() => setSelectedCategory('all')} className="mt-3 px-4 py-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-xs font-semibold rounded-xl transition-colors cursor-pointer">
-              Reset filters
-            </button>
+            <div className="mt-3 flex items-center justify-center gap-3 flex-wrap">
+              <button type="button" onClick={() => setSelectedCategory('all')} className="px-4 py-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-xs font-semibold rounded-xl transition-colors cursor-pointer">
+                Reset filters
+              </button>
+              {onLoadSampleData && (
+                <button type="button" onClick={onLoadSampleData} className="px-4 py-2 bg-[#0d5543] hover:bg-[#093c30] text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer">
+                  Load sample data
+                </button>
+              )}
+            </div>
           </div>
         )}
       </div>

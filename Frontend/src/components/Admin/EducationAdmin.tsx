@@ -11,6 +11,9 @@ interface EducationAdminProps {
 export function EducationAdmin({ education, onRefresh }: EducationAdminProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingItem, setEditingItem] = useState<Education | null>(null)
+  const [isSaving, setIsSaving] = useState(false)
+  const [saveMessage, setSaveMessage] = useState('')
+  const [saveError, setSaveError] = useState('')
   const [formData, setFormData] = useState<Partial<Education>>({
     degree: '',
     institution: '',
@@ -23,12 +26,16 @@ export function EducationAdmin({ education, onRefresh }: EducationAdminProps) {
   const openCreate = () => {
     setEditingItem(null)
     setFormData({ degree: '', institution: '', location: '', startDate: '', endDate: '', description: '' })
+    setSaveMessage('')
+    setSaveError('')
     setIsModalOpen(true)
   }
 
   const openEdit = (edu: Education) => {
     setEditingItem(edu)
     setFormData(edu)
+    setSaveMessage('')
+    setSaveError('')
     setIsModalOpen(true)
   }
 
@@ -39,23 +46,37 @@ export function EducationAdmin({ education, onRefresh }: EducationAdminProps) {
     }
   }
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    await portfolioApi.saveEducation(formData, editingItem?.id)
-    setIsModalOpen(false)
+  const handleTogglePublish = async (item: Education) => {
+    await portfolioApi.saveEducation({ isPublished: item.isPublished === false }, item.id)
     onRefresh()
   }
 
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    setIsSaving(true)
+    setSaveMessage('')
+    setSaveError('')
+    try {
+      await portfolioApi.saveEducation(formData, editingItem?.id)
+      setSaveMessage(editingItem ? 'Education successfully updated.' : 'Education successfully added.')
+      await onRefresh()
+    } catch (error) {
+      setSaveError(error instanceof Error ? error.message : 'Could not save the education record.')
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="admin-workspace-page space-y-6">
+      <div className="admin-page-header flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
             <GraduationCap className="text-[#0d5543] dark:text-[#2dd4bf]" size={24} />
             <span>Education Management</span>
           </h1>
           <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
-            PostgreSQL "Education" table records
+            Keep your academic background and qualifications up to date.
           </p>
         </div>
 
@@ -71,7 +92,7 @@ export function EducationAdmin({ education, onRefresh }: EducationAdminProps) {
         {education.map((edu) => (
           <div
             key={edu.id}
-            className="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 flex flex-col sm:flex-row sm:items-start justify-between gap-4"
+            className="admin-record-card p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 flex flex-col sm:flex-row sm:items-start justify-between gap-4"
           >
             <div className="space-y-1">
               <div className="flex items-center gap-2">
@@ -94,6 +115,9 @@ export function EducationAdmin({ education, onRefresh }: EducationAdminProps) {
             </div>
 
             <div className="flex items-center gap-1 self-end sm:self-start shrink-0">
+              <button onClick={() => void handleTogglePublish(edu)} className="px-2 py-1 text-[10px] font-semibold rounded-lg bg-neutral-100 text-neutral-600">
+                {edu.isPublished === false ? 'Draft' : 'Published'}
+              </button>
               <button
                 onClick={() => openEdit(edu)}
                 className="p-1.5 text-neutral-500 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
@@ -122,6 +146,16 @@ export function EducationAdmin({ education, onRefresh }: EducationAdminProps) {
                 <X size={18} />
               </button>
             </div>
+            {saveMessage && (
+              <div role="status" className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-xs font-medium text-emerald-700">
+                {saveMessage}
+              </div>
+            )}
+            {saveError && (
+              <div role="alert" className="mb-4 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2.5 text-xs font-medium text-rose-700">
+                {saveError}
+              </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-3 text-xs">
               <div>
                 <label className="block text-neutral-700 dark:text-neutral-300 mb-1 font-medium">Degree / Field *</label>
@@ -191,15 +225,17 @@ export function EducationAdmin({ education, onRefresh }: EducationAdminProps) {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
+                  disabled={isSaving}
                   className="px-4 py-2 rounded-xl text-neutral-500 hover:bg-neutral-100"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
+                  disabled={isSaving}
                   className="px-4 py-2 rounded-xl bg-[#0d5543] text-white font-semibold flex items-center gap-1"
                 >
-                  <Check size={14} /> Save
+                  <Check size={14} /> {isSaving ? 'Saving...' : 'Save'}
                 </button>
               </div>
             </form>
