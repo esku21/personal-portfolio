@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import swaggerUi from 'swagger-ui-express';
 import { env } from './lib/env.js';
+import { logger } from './lib/logger.js';
 import { prisma } from './lib/prisma.js';
 import { requireAuth } from './middleware/auth.js';
 import { errorHandler } from './middleware/errors.js';
@@ -56,7 +57,8 @@ app.get('/api/health', async (_req, res) => {
         await prisma.$queryRaw `SELECT 1`;
         res.json({ status: 'ok', database: 'connected' });
     }
-    catch {
+    catch (error) {
+        logger.error({ error }, 'Database health check failed');
         res.status(503).json({ status: 'error', database: 'unavailable' });
     }
 });
