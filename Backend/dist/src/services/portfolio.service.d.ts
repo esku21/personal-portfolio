@@ -85,7 +85,7 @@ export declare function getPortfolio(): Promise<{
         sortOrder: number;
     }[];
 }>;
-export declare function getPublishedProject(slug: string): import("../generated/prisma/index.js").Prisma.Prisma__ProjectClient<{
+export declare function getPublishedProject(slug: string): import("../generated/prisma/models.js").Prisma__ProjectClient<{
     id: string;
     slug: string;
     title: string;
@@ -101,10 +101,10 @@ export declare function getPublishedProject(slug: string): import("../generated/
     isFeatured: boolean;
     createdAt: Date;
     updatedAt: Date;
-} | null, null, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+} | null, null, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function listProjects(): import("../generated/prisma/index.js").Prisma.PrismaPromise<{
+export declare function listProjects(): import("../generated/prisma/internal/prismaNamespace.js").PrismaPromise<{
     id: string;
     slug: string;
     title: string;
@@ -194,7 +194,7 @@ export declare function getPortfolioReport(currentPeriod: ReportPeriod, previous
         experienceDurationReliable: boolean;
     };
 }>;
-export declare function createProject(data: Parameters<typeof prisma.project.create>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__ProjectClient<{
+export declare function createProject(data: Parameters<typeof prisma.project.create>[0]['data']): import("../generated/prisma/models.js").Prisma__ProjectClient<{
     id: string;
     slug: string;
     title: string;
@@ -210,10 +210,10 @@ export declare function createProject(data: Parameters<typeof prisma.project.cre
     isFeatured: boolean;
     createdAt: Date;
     updatedAt: Date;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function updateProject(id: string, data: Parameters<typeof prisma.project.update>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__ProjectClient<{
+export declare function updateProject(id: string, data: Parameters<typeof prisma.project.update>[0]['data']): import("../generated/prisma/models.js").Prisma__ProjectClient<{
     id: string;
     slug: string;
     title: string;
@@ -229,10 +229,10 @@ export declare function updateProject(id: string, data: Parameters<typeof prisma
     isFeatured: boolean;
     createdAt: Date;
     updatedAt: Date;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function deleteProject(id: string): import("../generated/prisma/index.js").Prisma.Prisma__ProjectClient<{
+export declare function deleteProject(id: string): import("../generated/prisma/models.js").Prisma__ProjectClient<{
     id: string;
     slug: string;
     title: string;
@@ -248,10 +248,10 @@ export declare function deleteProject(id: string): import("../generated/prisma/i
     isFeatured: boolean;
     createdAt: Date;
     updatedAt: Date;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function getProfile(): import("../generated/prisma/index.js").Prisma.Prisma__ProfileClient<{
+export declare function getProfile(): import("../generated/prisma/models.js").Prisma__ProfileClient<{
     id: string;
     name: string;
     role: string;
@@ -267,10 +267,10 @@ export declare function getProfile(): import("../generated/prisma/index.js").Pri
     aboutText: string | null;
     createdAt: Date;
     updatedAt: Date;
-} | null, null, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+} | null, null, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function updateProfile(data: Parameters<typeof prisma.profile.upsert>[0]['create']): import("../generated/prisma/index.js").Prisma.Prisma__ProfileClient<{
+export declare function updateProfile(data: Parameters<typeof prisma.profile.upsert>[0]['create']): import("../generated/prisma/models.js").Prisma__ProfileClient<{
     id: string;
     name: string;
     role: string;
@@ -286,10 +286,10 @@ export declare function updateProfile(data: Parameters<typeof prisma.profile.ups
     aboutText: string | null;
     createdAt: Date;
     updatedAt: Date;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function listExperience(): import("../generated/prisma/index.js").Prisma.PrismaPromise<{
+export declare function listExperience(): import("../generated/prisma/internal/prismaNamespace.js").PrismaPromise<{
     id: string;
     role: string;
     company: string;
@@ -301,7 +301,7 @@ export declare function listExperience(): import("../generated/prisma/index.js")
     isPublished: boolean;
     sortOrder: number;
 }[]>;
-export declare function createExperience(data: Parameters<typeof prisma.experience.create>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__ExperienceClient<{
+export declare function createExperience(data: Parameters<typeof prisma.experience.create>[0]['data']): import("../generated/prisma/models.js").Prisma__ExperienceClient<{
     id: string;
     role: string;
     company: string;
@@ -312,10 +312,10 @@ export declare function createExperience(data: Parameters<typeof prisma.experien
     imageUrls: string[];
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function updateExperience(id: string, data: Parameters<typeof prisma.experience.update>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__ExperienceClient<{
+export declare function updateExperience(id: string, data: Parameters<typeof prisma.experience.update>[0]['data']): import("../generated/prisma/models.js").Prisma__ExperienceClient<{
     id: string;
     role: string;
     company: string;
@@ -326,10 +326,10 @@ export declare function updateExperience(id: string, data: Parameters<typeof pri
     imageUrls: string[];
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function deleteExperience(id: string): import("../generated/prisma/index.js").Prisma.Prisma__ExperienceClient<{
+export declare function deleteExperience(id: string): import("../generated/prisma/models.js").Prisma__ExperienceClient<{
     id: string;
     role: string;
     company: string;
@@ -340,10 +340,10 @@ export declare function deleteExperience(id: string): import("../generated/prism
     imageUrls: string[];
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function listEducation(): import("../generated/prisma/index.js").Prisma.PrismaPromise<{
+export declare function listEducation(): import("../generated/prisma/internal/prismaNamespace.js").PrismaPromise<{
     id: string;
     institution: string;
     degree: string;
@@ -354,7 +354,7 @@ export declare function listEducation(): import("../generated/prisma/index.js").
     isPublished: boolean;
     sortOrder: number;
 }[]>;
-export declare function createEducation(data: Parameters<typeof prisma.education.create>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__EducationClient<{
+export declare function createEducation(data: Parameters<typeof prisma.education.create>[0]['data']): import("../generated/prisma/models.js").Prisma__EducationClient<{
     id: string;
     institution: string;
     degree: string;
@@ -364,10 +364,10 @@ export declare function createEducation(data: Parameters<typeof prisma.education
     description: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function updateEducation(id: string, data: Parameters<typeof prisma.education.update>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__EducationClient<{
+export declare function updateEducation(id: string, data: Parameters<typeof prisma.education.update>[0]['data']): import("../generated/prisma/models.js").Prisma__EducationClient<{
     id: string;
     institution: string;
     degree: string;
@@ -377,10 +377,10 @@ export declare function updateEducation(id: string, data: Parameters<typeof pris
     description: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function deleteEducation(id: string): import("../generated/prisma/index.js").Prisma.Prisma__EducationClient<{
+export declare function deleteEducation(id: string): import("../generated/prisma/models.js").Prisma__EducationClient<{
     id: string;
     institution: string;
     degree: string;
@@ -390,10 +390,10 @@ export declare function deleteEducation(id: string): import("../generated/prisma
     description: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function listSkills(): import("../generated/prisma/index.js").Prisma.PrismaPromise<{
+export declare function listSkills(): import("../generated/prisma/internal/prismaNamespace.js").PrismaPromise<{
     id: string;
     name: string;
     category: string;
@@ -402,7 +402,7 @@ export declare function listSkills(): import("../generated/prisma/index.js").Pri
     isPublished: boolean;
     sortOrder: number;
 }[]>;
-export declare function createSkill(data: Parameters<typeof prisma.skill.create>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__SkillClient<{
+export declare function createSkill(data: Parameters<typeof prisma.skill.create>[0]['data']): import("../generated/prisma/models.js").Prisma__SkillClient<{
     id: string;
     name: string;
     category: string;
@@ -410,10 +410,10 @@ export declare function createSkill(data: Parameters<typeof prisma.skill.create>
     imageUrl: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function updateSkill(id: string, data: Parameters<typeof prisma.skill.update>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__SkillClient<{
+export declare function updateSkill(id: string, data: Parameters<typeof prisma.skill.update>[0]['data']): import("../generated/prisma/models.js").Prisma__SkillClient<{
     id: string;
     name: string;
     category: string;
@@ -421,10 +421,10 @@ export declare function updateSkill(id: string, data: Parameters<typeof prisma.s
     imageUrl: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function deleteSkill(id: string): import("../generated/prisma/index.js").Prisma.Prisma__SkillClient<{
+export declare function deleteSkill(id: string): import("../generated/prisma/models.js").Prisma__SkillClient<{
     id: string;
     name: string;
     category: string;
@@ -432,10 +432,10 @@ export declare function deleteSkill(id: string): import("../generated/prisma/ind
     imageUrl: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function listServices(): import("../generated/prisma/index.js").Prisma.PrismaPromise<{
+export declare function listServices(): import("../generated/prisma/internal/prismaNamespace.js").PrismaPromise<{
     id: string;
     title: string;
     description: string;
@@ -443,37 +443,37 @@ export declare function listServices(): import("../generated/prisma/index.js").P
     isPublished: boolean;
     sortOrder: number;
 }[]>;
-export declare function createService(data: Parameters<typeof prisma.service.create>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__ServiceClient<{
+export declare function createService(data: Parameters<typeof prisma.service.create>[0]['data']): import("../generated/prisma/models.js").Prisma__ServiceClient<{
     id: string;
     title: string;
     description: string;
     icon: string;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function updateService(id: string, data: Parameters<typeof prisma.service.update>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__ServiceClient<{
+export declare function updateService(id: string, data: Parameters<typeof prisma.service.update>[0]['data']): import("../generated/prisma/models.js").Prisma__ServiceClient<{
     id: string;
     title: string;
     description: string;
     icon: string;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function deleteService(id: string): import("../generated/prisma/index.js").Prisma.Prisma__ServiceClient<{
+export declare function deleteService(id: string): import("../generated/prisma/models.js").Prisma__ServiceClient<{
     id: string;
     title: string;
     description: string;
     icon: string;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function listCertifications(): import("../generated/prisma/index.js").Prisma.PrismaPromise<{
+export declare function listCertifications(): import("../generated/prisma/internal/prismaNamespace.js").PrismaPromise<{
     id: string;
     name: string;
     issuer: string;
@@ -483,7 +483,7 @@ export declare function listCertifications(): import("../generated/prisma/index.
     isPublished: boolean;
     sortOrder: number;
 }[]>;
-export declare function createCertification(data: Parameters<typeof prisma.certification.create>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__CertificationClient<{
+export declare function createCertification(data: Parameters<typeof prisma.certification.create>[0]['data']): import("../generated/prisma/models.js").Prisma__CertificationClient<{
     id: string;
     name: string;
     issuer: string;
@@ -492,10 +492,10 @@ export declare function createCertification(data: Parameters<typeof prisma.certi
     imageUrl: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function updateCertification(id: string, data: Parameters<typeof prisma.certification.update>[0]['data']): import("../generated/prisma/index.js").Prisma.Prisma__CertificationClient<{
+export declare function updateCertification(id: string, data: Parameters<typeof prisma.certification.update>[0]['data']): import("../generated/prisma/models.js").Prisma__CertificationClient<{
     id: string;
     name: string;
     issuer: string;
@@ -504,10 +504,10 @@ export declare function updateCertification(id: string, data: Parameters<typeof 
     imageUrl: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function deleteCertification(id: string): import("../generated/prisma/index.js").Prisma.Prisma__CertificationClient<{
+export declare function deleteCertification(id: string): import("../generated/prisma/models.js").Prisma__CertificationClient<{
     id: string;
     name: string;
     issuer: string;
@@ -516,7 +516,7 @@ export declare function deleteCertification(id: string): import("../generated/pr
     imageUrl: string | null;
     isPublished: boolean;
     sortOrder: number;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
 export {};

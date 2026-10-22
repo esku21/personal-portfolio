@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
   output   = "../src/generated/prisma"
 }
 
@@ -94,7 +94,7 @@ model Certification {
   issueDate     String?
   credentialUrl String?
   imageUrl      String?
-  isPublished   Boolean @default(true)
+  isPublished   Boolean  @default(true)
   sortOrder     Int      @default(0)
 }
 
@@ -104,7 +104,7 @@ model Service {
   description String
   icon        String
   isPublished Boolean @default(true)
-  sortOrder   Int      @default(0)
+  sortOrder   Int     @default(0)
 }
 
 model ContactMessage {

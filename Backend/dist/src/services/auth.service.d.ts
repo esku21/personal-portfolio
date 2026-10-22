@@ -6,12 +6,12 @@ export declare function authenticate(email: string, password: string): Promise<{
         name: string;
     };
 } | null>;
-export declare function findAdmin(id: string): import("../generated/prisma/index.js").Prisma.Prisma__AdminClient<{
+export declare function findAdmin(id: string): import("../generated/prisma/models.js").Prisma__AdminClient<{
     email: string;
     id: string;
     name: string;
-} | null, null, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+} | null, null, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
 export declare function updateAdminAccount(id: string, data: {
     name: string;

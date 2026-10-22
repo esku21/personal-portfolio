@@ -4,7 +4,7 @@ export declare function createMessage(data: {
     phone: string;
     subject: string;
     message: string;
-}): import("../generated/prisma/index.js").Prisma.Prisma__ContactMessageClient<{
+}): import("../generated/prisma/models.js").Prisma__ContactMessageClient<{
     id: string;
     name: string;
     email: string;
@@ -14,10 +14,10 @@ export declare function createMessage(data: {
     status: string;
     createdAt: Date;
     updatedAt: Date;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function listMessages(): import("../generated/prisma/index.js").Prisma.PrismaPromise<{
+export declare function listMessages(): import("../generated/prisma/internal/prismaNamespace.js").PrismaPromise<{
     id: string;
     name: string;
     email: string;
@@ -28,7 +28,7 @@ export declare function listMessages(): import("../generated/prisma/index.js").P
     createdAt: Date;
     updatedAt: Date;
 }[]>;
-export declare function updateMessageStatus(id: string, status: string): import("../generated/prisma/index.js").Prisma.Prisma__ContactMessageClient<{
+export declare function updateMessageStatus(id: string, status: string): import("../generated/prisma/models.js").Prisma__ContactMessageClient<{
     id: string;
     name: string;
     email: string;
@@ -38,10 +38,10 @@ export declare function updateMessageStatus(id: string, status: string): import(
     status: string;
     createdAt: Date;
     updatedAt: Date;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
-export declare function deleteMessage(id: string): import("../generated/prisma/index.js").Prisma.Prisma__ContactMessageClient<{
+export declare function deleteMessage(id: string): import("../generated/prisma/models.js").Prisma__ContactMessageClient<{
     id: string;
     name: string;
     email: string;
@@ -51,8 +51,8 @@ export declare function deleteMessage(id: string): import("../generated/prisma/i
     status: string;
     createdAt: Date;
     updatedAt: Date;
-}, never, import("../generated/prisma/runtime/client.js").DefaultArgs, {
-    adapter: import("@prisma/adapter-pg").PrismaPg;
+}, never, import("@prisma/client/runtime/client").DefaultArgs, {
+    omit: import("../generated/prisma/internal/prismaNamespace.js").GlobalOmitConfig | undefined;
 }>;
 export declare function getStats(): Promise<{
     projects: number;
