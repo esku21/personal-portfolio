@@ -1,23 +1,25 @@
 import { useState, useEffect } from 'react'
-import { 
-  Menu, 
-  Sun, 
-  Moon, 
-  Bell, 
-  RefreshCw, 
-  ChevronRight
+import {
+  Menu,
+  Sun,
+  Moon,
+  Bell,
+  RefreshCw,
+  ChevronRight,
 } from 'lucide-react'
-import type { 
-  Project, 
-  Stats, 
-  ContactMessage, 
-  Profile, 
-  Skill, 
-  Experience, 
-  Education, 
-  Certification, 
-  Service 
+
+import type {
+  Project,
+  Stats,
+  ContactMessage,
+  Profile,
+  Skill,
+  Experience,
+  Education,
+  Certification,
+  Service,
 } from '../types'
+
 import { portfolioApi } from '../services/api'
 import { AdminSidebar, type AdminTab } from './Admin/AdminSidebar'
 import { DashboardView } from './Admin/DashboardView'
@@ -38,9 +40,15 @@ export interface AdminDashboardProps {
   setDark?: (value: boolean) => void
 }
 
-export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboardProps) {
+export function AdminDashboard({
+  token,
+  onLogout,
+  dark,
+  setDark,
+}: AdminDashboardProps) {
   const [activeTab, setActiveTab] = useState<AdminTab>('dashboard')
   const [mobileOpen, setMobileOpen] = useState(false)
+
   const [stats, setStats] = useState<Stats>()
   const [projects, setProjects] = useState<Project[]>([])
   const [messages, setMessages] = useState<ContactMessage[]>([])
@@ -50,12 +58,14 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
   const [education, setEducation] = useState<Education[]>([])
   const [certifications, setCertifications] = useState<Certification[]>([])
   const [services, setServices] = useState<Service[]>([])
+
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   const refreshAll = async () => {
     setLoading(true)
     setError('')
+
     try {
       const [
         sRes,
@@ -66,7 +76,7 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
         expRes,
         eduRes,
         certRes,
-        srvRes
+        srvRes,
       ] = await Promise.all([
         portfolioApi.stats(),
         portfolioApi.projects(),
@@ -76,7 +86,7 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
         portfolioApi.experience(),
         portfolioApi.education(),
         portfolioApi.certifications(),
-        portfolioApi.services()
+        portfolioApi.services(),
       ])
 
       setStats(sRes.data)
@@ -88,7 +98,7 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
       setEducation(eduRes.data)
       setCertifications(certRes.data)
       setServices(srvRes.data)
-    } catch (err) {
+    } catch {
       setError('Could not refresh admin data. Please try again.')
     } finally {
       setLoading(false)
@@ -100,31 +110,51 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
   }, [token])
 
   const handleTogglePublish = async (project: Project) => {
-    await portfolioApi.saveProject({ isPublished: !project.isPublished }, project.id)
-    void refreshAll()
-  }
-
-  const handleResetSeed = async () => {
-    if (confirm('Reset database records to initial seed data?')) {
-      await portfolioApi.resetToSeed()
-      void refreshAll()
+    try {
+      await portfolioApi.saveProject(
+        { isPublished: !project.isPublished },
+        project.id,
+      )
+      await refreshAll()
+    } catch {
+      setError('Could not update the project. Please try again.')
     }
   }
 
-  const unreadCount = messages.filter((m) => m.status === 'unread').length
+  // The reset-seed API endpoint is not currently available.
+  // Keep the callback for DashboardView, but do not call a nonexistent API.
+  const handleResetSeed = () => {
+    setError(
+      'Reset to seed data is unavailable because the backend reset endpoint has not been configured.',
+    )
+  }
+
+  const unreadCount = messages.filter(
+    (message) => message.status === 'unread',
+  ).length
 
   const getTabTitle = (tab: AdminTab) => {
     switch (tab) {
-      case 'dashboard': return 'Dashboard Overview'
-      case 'projects': return 'Projects'
-      case 'certifications': return 'Certifications'
-      case 'contact-messages': return 'Messages'
-      case 'education': return 'Education'
-      case 'experience': return 'Experience'
-      case 'services': return 'Services'
-      case 'skills': return 'Skills'
-      case 'reports': return 'Reports & Analytics'
-      case 'profile': return 'Profile Settings'
+      case 'dashboard':
+        return 'Dashboard Overview'
+      case 'projects':
+        return 'Projects'
+      case 'certifications':
+        return 'Certifications'
+      case 'contact-messages':
+        return 'Messages'
+      case 'education':
+        return 'Education'
+      case 'experience':
+        return 'Experience'
+      case 'services':
+        return 'Services'
+      case 'skills':
+        return 'Skills'
+      case 'reports':
+        return 'Reports & Analytics'
+      case 'profile':
+        return 'Profile Settings'
     }
   }
 
@@ -155,7 +185,10 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
 
             <div className="flex items-center gap-2 text-xs font-medium text-neutral-400">
               <span className="hidden sm:inline">Admin</span>
-              <ChevronRight size={13} className="hidden sm:inline text-neutral-400" />
+              <ChevronRight
+                size={13}
+                className="hidden sm:inline text-neutral-400"
+              />
               <span className="text-neutral-900 dark:text-neutral-100 font-semibold">
                 {getTabTitle(activeTab)}
               </span>
@@ -169,7 +202,10 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
               title="Refresh database records"
               aria-label="Refresh admin data"
             >
-              <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+              <RefreshCw
+                size={16}
+                className={loading ? 'animate-spin' : ''}
+              />
             </button>
 
             {setDark && (
@@ -209,12 +245,18 @@ export function AdminDashboard({ token, onLogout, dark, setDark }: AdminDashboar
         </header>
 
         {error && (
-          <div className="mx-4 sm:mx-8 mt-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/60 text-xs text-amber-800 dark:text-amber-300">
+          <div
+            role="alert"
+            className="mx-4 sm:mx-8 mt-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/60 text-xs text-amber-800 dark:text-amber-300"
+          >
             {error}
           </div>
         )}
 
-        <main id="admin-content" className="admin-content mx-auto w-full max-w-[1600px] flex-1 p-3 sm:p-5 lg:p-8">
+        <main
+          id="admin-content"
+          className="admin-content mx-auto w-full max-w-[1600px] flex-1 p-3 sm:p-5 lg:p-8"
+        >
           {activeTab === 'dashboard' && (
             <DashboardView
               stats={stats}

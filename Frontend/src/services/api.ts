@@ -1,9 +1,9 @@
-﻿
-import type {
+﻿import type {
   Certification,
   ContactMessage,
   Education,
   Experience,
+  Portfolio,
   PortfolioReport,
   Profile,
   Project,
@@ -12,7 +12,7 @@ import type {
   Stats,
 } from '../types'
 
-// Production API URL, with a local development fallback.
+// API URL for local development and production.
 const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ||
   (import.meta.env.DEV
@@ -32,25 +32,24 @@ export interface AdminAccount {
 
 interface LoginResponse {
   token: string
+  admin?: AdminAccount
 }
 
 function getErrorMessage(payload: unknown, status: number): string {
-  if (
-    payload !== null &&
-    typeof payload === 'object' &&
-    'error' in payload &&
-    typeof payload.error === 'string'
-  ) {
-    return payload.error
-  }
+  if (payload !== null && typeof payload === 'object') {
+    if (
+      'error' in payload &&
+      typeof payload.error === 'string'
+    ) {
+      return payload.error
+    }
 
-  if (
-    payload !== null &&
-    typeof payload === 'object' &&
-    'message' in payload &&
-    typeof payload.message === 'string'
-  ) {
-    return payload.message
+    if (
+      'message' in payload &&
+      typeof payload.message === 'string'
+    ) {
+      return payload.message
+    }
   }
 
   return `Request failed with status ${status}`
@@ -65,17 +64,23 @@ async function request<T = unknown>(
       ? window.localStorage.getItem('admin_token')
       : null
 
+  const headers = new Headers(options.headers)
+  headers.set('Accept', 'application/json')
+
+  if (options.body && !headers.has('Content-Type')) {
+    headers.set('Content-Type', 'application/json')
+  }
+
+  if (token) {
+    headers.set('Authorization', `Bearer ${token}`)
+  }
+
   let response: Response
 
   try {
     response = await fetch(`${API_BASE_URL}${path}`, {
       ...options,
-      headers: {
-        Accept: 'application/json',
-        ...(options.body ? { 'Content-Type': 'application/json' } : {}),
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        ...options.headers,
-      },
+      headers,
     })
   } catch {
     throw new Error(
@@ -90,13 +95,6 @@ async function request<T = unknown>(
   }
 
   return { data: payload as T }
-}
-
-async function portfolioResource<T>(
-  resource: string,
-): Promise<ApiResponse<T>> {
-  const response = await request<Record<string, T>>('/portfolio')
-  return { data: response.data[resource] }
 }
 
 function saveResource(
@@ -124,7 +122,7 @@ function deleteResource(resource: string, id: string) {
 export const portfolioApi = {
   // Public portfolio
   portfolio() {
-    return request<import('../types').Portfolio>('/portfolio')
+    return request<Portfolio>('/portfolio')
   },
 
   // Authentication
@@ -149,6 +147,7 @@ export const portfolioApi = {
 
   reports(params: URLSearchParams) {
     const query = params.toString()
+
     return request<PortfolioReport>(
       `/admin/reports${query ? `?${query}` : ''}`,
     )
@@ -282,10 +281,5 @@ export const portfolioApi = {
       method: 'PUT',
       body: JSON.stringify(data),
     })
-  },
-
-  // Keep this only if the backend implements this endpoint.
-  resetToSeed() {
-    return request('/admin/reset-seed', { method: 'POST' })
   },
 }
