@@ -130,47 +130,94 @@ export const app = express()
 
 app.disable('x-powered-by')
 
-// Render runs the app behind a reverse proxy.
-// Trust one proxy hop so rate limiting can identify client IPs.
+// Render runs behind a reverse proxy.
 app.set('trust proxy', 1)
 
-const allowedFrontendOrigins = new Set([
-  env.FRONTEND_URL.replace(/\/+$/, ''),
-  'http://localhost:5173',
-  'http://127.0.0.1:5173',
-  'http://10.230.49.216:5173',
-])
+// Configure allowed frontend origins.
+const allowedFrontendOrigins = new Set(
+  [
+    env.FRONTEND_URL,
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://10.230.49.216:5173',
+  ]
+    .filter((origin): origin is string => Boolean(origin))
+    .map((origin) => origin.replace(/\/+$/, ''))
+)
 
 // CORS must run before API routes.
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedFrontendOrigins.has(origin.replace(/\/+$/, ''))) {
-      callback(null, true)
-    } else {
-      callback(new Error(`Origin not allowed by CORS: ${origin}`))
-    }
-  },
-  credentials: false,
-}))
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (
+        !origin ||
+        allowedFrontendOrigins.has(origin.replace(/\/+$/, ''))
+      ) {
+        callback(null, true)
+      } else {
+        callback(new Error(`Origin not allowed by CORS: ${origin}`))
+      }
+    },
+    credentials: false,
+  })
+)
 
-app.use('/api/admin/projects', requireAuth, express.json({ limit: '75mb' }))
-app.use('/api/admin/experience', requireAuth, express.json({ limit: '75mb' }))
+// Security headers.
+app.use(helmet())
+
+// Request body limits.
+app.use(
+  '/api/admin/projects',
+  requireAuth,
+  express.json({ limit: '75mb' })
+)
+
+app.use(
+  '/api/admin/experience',
+  requireAuth,
+  express.json({ limit: '75mb' })
+)
+
 app.use(express.json({ limit: '8mb' }))
 
-app.use(rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 100,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
-  skip: (req) => req.path.startsWith('/api/admin'),
-}))
+// Rate limiting.
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 100,
+    standardHeaders: 'draft-7',
+    legacyHeaders: false,
+    skip: (req) => req.path.startsWith('/api/admin'),
+  })
+)
 
+// Homepage: fixes "Cannot GET /".
+// This confirms the backend is running; it does not serve the frontend UI.
+app.get('/', (_req, res) => {
+  res.status(200).json({
+    name: 'Personal Portfolio API',
+    status: 'running',
+    message: 'Welcome to the Personal Portfolio API.',
+    endpoints: {
+      health: '/api/health',
+      portfolio: '/api/portfolio',
+      documentation: '/api-docs',
+    },
+  })
+})
+
+// API and database health check.
 app.get('/api/health', async (_req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`
-    res.json({ status: 'ok', database: 'connected' })
+
+    res.status(200).json({
+      status: 'ok',
+      database: 'connected',
+    })
   } catch (error) {
     logger.error({ error }, 'Database health check failed')
+
     res.status(503).json({
       status: 'error',
       database: 'unavailable',
@@ -178,8 +225,29 @@ app.get('/api/health', async (_req, res) => {
   }
 })
 
+// Public API routes.
 app.use('/api', publicRouter)
+
+// Authentication routes.
 app.use('/api/auth', authRouter)
+
+// Protected admin routes.
 app.use('/api/admin', adminRouter)
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
+// Swagger API documentation.
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument)
+)
+
+// Handle unknown routes.
+app.use((_req, res) => {
+  res.status(404).json({
+    status: 'error',
+    message: 'Route not found.',
+  })
+})
+
+// Centralized error handler must be last.
 app.use(errorHandler)
