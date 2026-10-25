@@ -41,8 +41,8 @@ export type CertificationMinAggregateOutputType = {
   issueDate: string | null
   credentialUrl: string | null
   imageUrl: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
 }
 
 export type CertificationMaxAggregateOutputType = {
@@ -52,8 +52,8 @@ export type CertificationMaxAggregateOutputType = {
   issueDate: string | null
   credentialUrl: string | null
   imageUrl: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
 }
 
 export type CertificationCountAggregateOutputType = {
@@ -63,8 +63,8 @@ export type CertificationCountAggregateOutputType = {
   issueDate: number
   credentialUrl: number
   imageUrl: number
-  isPublished: number
   sortOrder: number
+  isPublished: number
   _all: number
 }
 
@@ -84,8 +84,8 @@ export type CertificationMinAggregateInputType = {
   issueDate?: true
   credentialUrl?: true
   imageUrl?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
 }
 
 export type CertificationMaxAggregateInputType = {
@@ -95,8 +95,8 @@ export type CertificationMaxAggregateInputType = {
   issueDate?: true
   credentialUrl?: true
   imageUrl?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
 }
 
 export type CertificationCountAggregateInputType = {
@@ -106,8 +106,8 @@ export type CertificationCountAggregateInputType = {
   issueDate?: true
   credentialUrl?: true
   imageUrl?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
   _all?: true
 }
 
@@ -204,8 +204,8 @@ export type CertificationGroupByOutputType = {
   issueDate: string | null
   credentialUrl: string | null
   imageUrl: string | null
-  isPublished: boolean
   sortOrder: number
+  isPublished: boolean
   _count: CertificationCountAggregateOutputType | null
   _avg: CertificationAvgAggregateOutputType | null
   _sum: CertificationSumAggregateOutputType | null
@@ -238,8 +238,8 @@ export type CertificationWhereInput = {
   issueDate?: Prisma.StringNullableFilter<"Certification"> | string | null
   credentialUrl?: Prisma.StringNullableFilter<"Certification"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Certification"> | string | null
-  isPublished?: Prisma.BoolFilter<"Certification"> | boolean
   sortOrder?: Prisma.IntFilter<"Certification"> | number
+  isPublished?: Prisma.BoolFilter<"Certification"> | boolean
 }
 
 export type CertificationOrderByWithRelationInput = {
@@ -249,8 +249,8 @@ export type CertificationOrderByWithRelationInput = {
   issueDate?: Prisma.SortOrderInput | Prisma.SortOrder
   credentialUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type CertificationWhereUniqueInput = Prisma.AtLeast<{
@@ -263,8 +263,8 @@ export type CertificationWhereUniqueInput = Prisma.AtLeast<{
   issueDate?: Prisma.StringNullableFilter<"Certification"> | string | null
   credentialUrl?: Prisma.StringNullableFilter<"Certification"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Certification"> | string | null
-  isPublished?: Prisma.BoolFilter<"Certification"> | boolean
   sortOrder?: Prisma.IntFilter<"Certification"> | number
+  isPublished?: Prisma.BoolFilter<"Certification"> | boolean
 }, "id">
 
 export type CertificationOrderByWithAggregationInput = {
@@ -274,8 +274,8 @@ export type CertificationOrderByWithAggregationInput = {
   issueDate?: Prisma.SortOrderInput | Prisma.SortOrder
   credentialUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
   _count?: Prisma.CertificationCountOrderByAggregateInput
   _avg?: Prisma.CertificationAvgOrderByAggregateInput
   _max?: Prisma.CertificationMaxOrderByAggregateInput
@@ -293,8 +293,8 @@ export type CertificationScalarWhereWithAggregatesInput = {
   issueDate?: Prisma.StringNullableWithAggregatesFilter<"Certification"> | string | null
   credentialUrl?: Prisma.StringNullableWithAggregatesFilter<"Certification"> | string | null
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Certification"> | string | null
-  isPublished?: Prisma.BoolWithAggregatesFilter<"Certification"> | boolean
   sortOrder?: Prisma.IntWithAggregatesFilter<"Certification"> | number
+  isPublished?: Prisma.BoolWithAggregatesFilter<"Certification"> | boolean
 }
 
 export type CertificationCreateInput = {
@@ -304,8 +304,8 @@ export type CertificationCreateInput = {
   issueDate?: string | null
   credentialUrl?: string | null
   imageUrl?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type CertificationUncheckedCreateInput = {
@@ -315,8 +315,8 @@ export type CertificationUncheckedCreateInput = {
   issueDate?: string | null
   credentialUrl?: string | null
   imageUrl?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type CertificationUpdateInput = {
@@ -326,8 +326,8 @@ export type CertificationUpdateInput = {
   issueDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   credentialUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CertificationUncheckedUpdateInput = {
@@ -337,8 +337,8 @@ export type CertificationUncheckedUpdateInput = {
   issueDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   credentialUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CertificationCreateManyInput = {
@@ -348,8 +348,8 @@ export type CertificationCreateManyInput = {
   issueDate?: string | null
   credentialUrl?: string | null
   imageUrl?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type CertificationUpdateManyMutationInput = {
@@ -359,8 +359,8 @@ export type CertificationUpdateManyMutationInput = {
   issueDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   credentialUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CertificationUncheckedUpdateManyInput = {
@@ -370,8 +370,8 @@ export type CertificationUncheckedUpdateManyInput = {
   issueDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   credentialUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type CertificationCountOrderByAggregateInput = {
@@ -381,8 +381,8 @@ export type CertificationCountOrderByAggregateInput = {
   issueDate?: Prisma.SortOrder
   credentialUrl?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type CertificationAvgOrderByAggregateInput = {
@@ -396,8 +396,8 @@ export type CertificationMaxOrderByAggregateInput = {
   issueDate?: Prisma.SortOrder
   credentialUrl?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type CertificationMinOrderByAggregateInput = {
@@ -407,8 +407,8 @@ export type CertificationMinOrderByAggregateInput = {
   issueDate?: Prisma.SortOrder
   credentialUrl?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type CertificationSumOrderByAggregateInput = {
@@ -424,8 +424,8 @@ export type CertificationSelect<ExtArgs extends runtime.Types.Extensions.Interna
   issueDate?: boolean
   credentialUrl?: boolean
   imageUrl?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["certification"]>
 
 export type CertificationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -435,8 +435,8 @@ export type CertificationSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   issueDate?: boolean
   credentialUrl?: boolean
   imageUrl?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["certification"]>
 
 export type CertificationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -446,8 +446,8 @@ export type CertificationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   issueDate?: boolean
   credentialUrl?: boolean
   imageUrl?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["certification"]>
 
 export type CertificationSelectScalar = {
@@ -457,11 +457,11 @@ export type CertificationSelectScalar = {
   issueDate?: boolean
   credentialUrl?: boolean
   imageUrl?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }
 
-export type CertificationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "issuer" | "issueDate" | "credentialUrl" | "imageUrl" | "isPublished" | "sortOrder", ExtArgs["result"]["certification"]>
+export type CertificationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "issuer" | "issueDate" | "credentialUrl" | "imageUrl" | "sortOrder" | "isPublished", ExtArgs["result"]["certification"]>
 
 export type $CertificationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Certification"
@@ -473,8 +473,8 @@ export type $CertificationPayload<ExtArgs extends runtime.Types.Extensions.Inter
     issueDate: string | null
     credentialUrl: string | null
     imageUrl: string | null
-    isPublished: boolean
     sortOrder: number
+    isPublished: boolean
   }, ExtArgs["result"]["certification"]>
   composites: {}
 }
@@ -904,8 +904,8 @@ export interface CertificationFieldRefs {
   readonly issueDate: Prisma.FieldRef<"Certification", 'String'>
   readonly credentialUrl: Prisma.FieldRef<"Certification", 'String'>
   readonly imageUrl: Prisma.FieldRef<"Certification", 'String'>
-  readonly isPublished: Prisma.FieldRef<"Certification", 'Boolean'>
   readonly sortOrder: Prisma.FieldRef<"Certification", 'Int'>
+  readonly isPublished: Prisma.FieldRef<"Certification", 'Boolean'>
 }
     
 

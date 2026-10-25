@@ -99,13 +99,13 @@ export const ProfileScalarFieldEnum = {
   email: 'email',
   githubUrl: 'githubUrl',
   linkedinUrl: 'linkedinUrl',
-  avatarUrl: 'avatarUrl',
-  resumeUrl: 'resumeUrl',
   availability: 'availability',
   aboutTitle: 'aboutTitle',
   aboutText: 'aboutText',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  avatarUrl: 'avatarUrl',
+  resumeUrl: 'resumeUrl'
 } as const
 
 export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
@@ -122,11 +122,11 @@ export const ProjectScalarFieldEnum = {
   githubUrl: 'githubUrl',
   liveUrl: 'liveUrl',
   imageUrl: 'imageUrl',
-  imageUrls: 'imageUrls',
   isPublished: 'isPublished',
   isFeatured: 'isFeatured',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  imageUrls: 'imageUrls'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
@@ -137,9 +137,9 @@ export const SkillScalarFieldEnum = {
   name: 'name',
   category: 'category',
   level: 'level',
-  imageUrl: 'imageUrl',
+  sortOrder: 'sortOrder',
   isPublished: 'isPublished',
-  sortOrder: 'sortOrder'
+  imageUrl: 'imageUrl'
 } as const
 
 export type SkillScalarFieldEnum = (typeof SkillScalarFieldEnum)[keyof typeof SkillScalarFieldEnum]
@@ -153,9 +153,9 @@ export const ExperienceScalarFieldEnum = {
   startDate: 'startDate',
   endDate: 'endDate',
   description: 'description',
-  imageUrls: 'imageUrls',
+  sortOrder: 'sortOrder',
   isPublished: 'isPublished',
-  sortOrder: 'sortOrder'
+  imageUrls: 'imageUrls'
 } as const
 
 export type ExperienceScalarFieldEnum = (typeof ExperienceScalarFieldEnum)[keyof typeof ExperienceScalarFieldEnum]
@@ -169,8 +169,8 @@ export const EducationScalarFieldEnum = {
   startDate: 'startDate',
   endDate: 'endDate',
   description: 'description',
-  isPublished: 'isPublished',
-  sortOrder: 'sortOrder'
+  sortOrder: 'sortOrder',
+  isPublished: 'isPublished'
 } as const
 
 export type EducationScalarFieldEnum = (typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum]
@@ -183,8 +183,8 @@ export const CertificationScalarFieldEnum = {
   issueDate: 'issueDate',
   credentialUrl: 'credentialUrl',
   imageUrl: 'imageUrl',
-  isPublished: 'isPublished',
-  sortOrder: 'sortOrder'
+  sortOrder: 'sortOrder',
+  isPublished: 'isPublished'
 } as const
 
 export type CertificationScalarFieldEnum = (typeof CertificationScalarFieldEnum)[keyof typeof CertificationScalarFieldEnum]
@@ -195,8 +195,8 @@ export const ServiceScalarFieldEnum = {
   title: 'title',
   description: 'description',
   icon: 'icon',
-  isPublished: 'isPublished',
-  sortOrder: 'sortOrder'
+  sortOrder: 'sortOrder',
+  isPublished: 'isPublished'
 } as const
 
 export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
@@ -206,12 +206,12 @@ export const ContactMessageScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  phone: 'phone',
   subject: 'subject',
   message: 'message',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  phone: 'phone'
 } as const
 
 export type ContactMessageScalarFieldEnum = (typeof ContactMessageScalarFieldEnum)[keyof typeof ContactMessageScalarFieldEnum]

@@ -41,9 +41,9 @@ export type SkillMinAggregateOutputType = {
   name: string | null
   category: string | null
   level: number | null
-  imageUrl: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
+  imageUrl: string | null
 }
 
 export type SkillMaxAggregateOutputType = {
@@ -51,9 +51,9 @@ export type SkillMaxAggregateOutputType = {
   name: string | null
   category: string | null
   level: number | null
-  imageUrl: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
+  imageUrl: string | null
 }
 
 export type SkillCountAggregateOutputType = {
@@ -61,9 +61,9 @@ export type SkillCountAggregateOutputType = {
   name: number
   category: number
   level: number
-  imageUrl: number
-  isPublished: number
   sortOrder: number
+  isPublished: number
+  imageUrl: number
   _all: number
 }
 
@@ -83,9 +83,9 @@ export type SkillMinAggregateInputType = {
   name?: true
   category?: true
   level?: true
-  imageUrl?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
+  imageUrl?: true
 }
 
 export type SkillMaxAggregateInputType = {
@@ -93,9 +93,9 @@ export type SkillMaxAggregateInputType = {
   name?: true
   category?: true
   level?: true
-  imageUrl?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
+  imageUrl?: true
 }
 
 export type SkillCountAggregateInputType = {
@@ -103,9 +103,9 @@ export type SkillCountAggregateInputType = {
   name?: true
   category?: true
   level?: true
-  imageUrl?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
+  imageUrl?: true
   _all?: true
 }
 
@@ -200,9 +200,9 @@ export type SkillGroupByOutputType = {
   name: string
   category: string
   level: number
-  imageUrl: string | null
-  isPublished: boolean
   sortOrder: number
+  isPublished: boolean
+  imageUrl: string | null
   _count: SkillCountAggregateOutputType | null
   _avg: SkillAvgAggregateOutputType | null
   _sum: SkillSumAggregateOutputType | null
@@ -233,9 +233,9 @@ export type SkillWhereInput = {
   name?: Prisma.StringFilter<"Skill"> | string
   category?: Prisma.StringFilter<"Skill"> | string
   level?: Prisma.IntFilter<"Skill"> | number
-  imageUrl?: Prisma.StringNullableFilter<"Skill"> | string | null
-  isPublished?: Prisma.BoolFilter<"Skill"> | boolean
   sortOrder?: Prisma.IntFilter<"Skill"> | number
+  isPublished?: Prisma.BoolFilter<"Skill"> | boolean
+  imageUrl?: Prisma.StringNullableFilter<"Skill"> | string | null
 }
 
 export type SkillOrderByWithRelationInput = {
@@ -243,9 +243,9 @@ export type SkillOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   level?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type SkillWhereUniqueInput = Prisma.AtLeast<{
@@ -256,9 +256,9 @@ export type SkillWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Skill"> | string
   category?: Prisma.StringFilter<"Skill"> | string
   level?: Prisma.IntFilter<"Skill"> | number
-  imageUrl?: Prisma.StringNullableFilter<"Skill"> | string | null
-  isPublished?: Prisma.BoolFilter<"Skill"> | boolean
   sortOrder?: Prisma.IntFilter<"Skill"> | number
+  isPublished?: Prisma.BoolFilter<"Skill"> | boolean
+  imageUrl?: Prisma.StringNullableFilter<"Skill"> | string | null
 }, "id">
 
 export type SkillOrderByWithAggregationInput = {
@@ -266,9 +266,9 @@ export type SkillOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   level?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SkillCountOrderByAggregateInput
   _avg?: Prisma.SkillAvgOrderByAggregateInput
   _max?: Prisma.SkillMaxOrderByAggregateInput
@@ -284,9 +284,9 @@ export type SkillScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   category?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   level?: Prisma.IntWithAggregatesFilter<"Skill"> | number
-  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Skill"> | string | null
-  isPublished?: Prisma.BoolWithAggregatesFilter<"Skill"> | boolean
   sortOrder?: Prisma.IntWithAggregatesFilter<"Skill"> | number
+  isPublished?: Prisma.BoolWithAggregatesFilter<"Skill"> | boolean
+  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Skill"> | string | null
 }
 
 export type SkillCreateInput = {
@@ -294,9 +294,9 @@ export type SkillCreateInput = {
   name: string
   category: string
   level?: number
-  imageUrl?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
+  imageUrl?: string | null
 }
 
 export type SkillUncheckedCreateInput = {
@@ -304,9 +304,9 @@ export type SkillUncheckedCreateInput = {
   name: string
   category: string
   level?: number
-  imageUrl?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
+  imageUrl?: string | null
 }
 
 export type SkillUpdateInput = {
@@ -314,9 +314,9 @@ export type SkillUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SkillUncheckedUpdateInput = {
@@ -324,9 +324,9 @@ export type SkillUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SkillCreateManyInput = {
@@ -334,9 +334,9 @@ export type SkillCreateManyInput = {
   name: string
   category: string
   level?: number
-  imageUrl?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
+  imageUrl?: string | null
 }
 
 export type SkillUpdateManyMutationInput = {
@@ -344,9 +344,9 @@ export type SkillUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SkillUncheckedUpdateManyInput = {
@@ -354,9 +354,9 @@ export type SkillUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SkillCountOrderByAggregateInput = {
@@ -364,9 +364,9 @@ export type SkillCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   level?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
 }
 
 export type SkillAvgOrderByAggregateInput = {
@@ -379,9 +379,9 @@ export type SkillMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   level?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
 }
 
 export type SkillMinOrderByAggregateInput = {
@@ -389,9 +389,9 @@ export type SkillMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
   level?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
 }
 
 export type SkillSumOrderByAggregateInput = {
@@ -414,9 +414,9 @@ export type SkillSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   name?: boolean
   category?: boolean
   level?: boolean
-  imageUrl?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
+  imageUrl?: boolean
 }, ExtArgs["result"]["skill"]>
 
 export type SkillSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -424,9 +424,9 @@ export type SkillSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   name?: boolean
   category?: boolean
   level?: boolean
-  imageUrl?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
+  imageUrl?: boolean
 }, ExtArgs["result"]["skill"]>
 
 export type SkillSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -434,9 +434,9 @@ export type SkillSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   name?: boolean
   category?: boolean
   level?: boolean
-  imageUrl?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
+  imageUrl?: boolean
 }, ExtArgs["result"]["skill"]>
 
 export type SkillSelectScalar = {
@@ -444,12 +444,12 @@ export type SkillSelectScalar = {
   name?: boolean
   category?: boolean
   level?: boolean
-  imageUrl?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
+  imageUrl?: boolean
 }
 
-export type SkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "category" | "level" | "imageUrl" | "isPublished" | "sortOrder", ExtArgs["result"]["skill"]>
+export type SkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "category" | "level" | "sortOrder" | "isPublished" | "imageUrl", ExtArgs["result"]["skill"]>
 
 export type $SkillPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Skill"
@@ -459,9 +459,9 @@ export type $SkillPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     name: string
     category: string
     level: number
-    imageUrl: string | null
-    isPublished: boolean
     sortOrder: number
+    isPublished: boolean
+    imageUrl: string | null
   }, ExtArgs["result"]["skill"]>
   composites: {}
 }
@@ -889,9 +889,9 @@ export interface SkillFieldRefs {
   readonly name: Prisma.FieldRef<"Skill", 'String'>
   readonly category: Prisma.FieldRef<"Skill", 'String'>
   readonly level: Prisma.FieldRef<"Skill", 'Int'>
-  readonly imageUrl: Prisma.FieldRef<"Skill", 'String'>
-  readonly isPublished: Prisma.FieldRef<"Skill", 'Boolean'>
   readonly sortOrder: Prisma.FieldRef<"Skill", 'Int'>
+  readonly isPublished: Prisma.FieldRef<"Skill", 'Boolean'>
+  readonly imageUrl: Prisma.FieldRef<"Skill", 'String'>
 }
     
 

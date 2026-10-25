@@ -39,8 +39,8 @@ export type ServiceMinAggregateOutputType = {
   title: string | null
   description: string | null
   icon: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
 }
 
 export type ServiceMaxAggregateOutputType = {
@@ -48,8 +48,8 @@ export type ServiceMaxAggregateOutputType = {
   title: string | null
   description: string | null
   icon: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
 }
 
 export type ServiceCountAggregateOutputType = {
@@ -57,8 +57,8 @@ export type ServiceCountAggregateOutputType = {
   title: number
   description: number
   icon: number
-  isPublished: number
   sortOrder: number
+  isPublished: number
   _all: number
 }
 
@@ -76,8 +76,8 @@ export type ServiceMinAggregateInputType = {
   title?: true
   description?: true
   icon?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
 }
 
 export type ServiceMaxAggregateInputType = {
@@ -85,8 +85,8 @@ export type ServiceMaxAggregateInputType = {
   title?: true
   description?: true
   icon?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
 }
 
 export type ServiceCountAggregateInputType = {
@@ -94,8 +94,8 @@ export type ServiceCountAggregateInputType = {
   title?: true
   description?: true
   icon?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
   _all?: true
 }
 
@@ -190,8 +190,8 @@ export type ServiceGroupByOutputType = {
   title: string
   description: string
   icon: string
-  isPublished: boolean
   sortOrder: number
+  isPublished: boolean
   _count: ServiceCountAggregateOutputType | null
   _avg: ServiceAvgAggregateOutputType | null
   _sum: ServiceSumAggregateOutputType | null
@@ -222,8 +222,8 @@ export type ServiceWhereInput = {
   title?: Prisma.StringFilter<"Service"> | string
   description?: Prisma.StringFilter<"Service"> | string
   icon?: Prisma.StringFilter<"Service"> | string
-  isPublished?: Prisma.BoolFilter<"Service"> | boolean
   sortOrder?: Prisma.IntFilter<"Service"> | number
+  isPublished?: Prisma.BoolFilter<"Service"> | boolean
 }
 
 export type ServiceOrderByWithRelationInput = {
@@ -231,8 +231,8 @@ export type ServiceOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type ServiceWhereUniqueInput = Prisma.AtLeast<{
@@ -243,8 +243,8 @@ export type ServiceWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Service"> | string
   description?: Prisma.StringFilter<"Service"> | string
   icon?: Prisma.StringFilter<"Service"> | string
-  isPublished?: Prisma.BoolFilter<"Service"> | boolean
   sortOrder?: Prisma.IntFilter<"Service"> | number
+  isPublished?: Prisma.BoolFilter<"Service"> | boolean
 }, "id">
 
 export type ServiceOrderByWithAggregationInput = {
@@ -252,8 +252,8 @@ export type ServiceOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
   _count?: Prisma.ServiceCountOrderByAggregateInput
   _avg?: Prisma.ServiceAvgOrderByAggregateInput
   _max?: Prisma.ServiceMaxOrderByAggregateInput
@@ -269,8 +269,8 @@ export type ServiceScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"Service"> | string
   description?: Prisma.StringWithAggregatesFilter<"Service"> | string
   icon?: Prisma.StringWithAggregatesFilter<"Service"> | string
-  isPublished?: Prisma.BoolWithAggregatesFilter<"Service"> | boolean
   sortOrder?: Prisma.IntWithAggregatesFilter<"Service"> | number
+  isPublished?: Prisma.BoolWithAggregatesFilter<"Service"> | boolean
 }
 
 export type ServiceCreateInput = {
@@ -278,8 +278,8 @@ export type ServiceCreateInput = {
   title: string
   description: string
   icon: string
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type ServiceUncheckedCreateInput = {
@@ -287,8 +287,8 @@ export type ServiceUncheckedCreateInput = {
   title: string
   description: string
   icon: string
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type ServiceUpdateInput = {
@@ -296,8 +296,8 @@ export type ServiceUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ServiceUncheckedUpdateInput = {
@@ -305,8 +305,8 @@ export type ServiceUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ServiceCreateManyInput = {
@@ -314,8 +314,8 @@ export type ServiceCreateManyInput = {
   title: string
   description: string
   icon: string
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type ServiceUpdateManyMutationInput = {
@@ -323,8 +323,8 @@ export type ServiceUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ServiceUncheckedUpdateManyInput = {
@@ -332,8 +332,8 @@ export type ServiceUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ServiceCountOrderByAggregateInput = {
@@ -341,8 +341,8 @@ export type ServiceCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type ServiceAvgOrderByAggregateInput = {
@@ -354,8 +354,8 @@ export type ServiceMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type ServiceMinOrderByAggregateInput = {
@@ -363,8 +363,8 @@ export type ServiceMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type ServiceSumOrderByAggregateInput = {
@@ -378,8 +378,8 @@ export type ServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   title?: boolean
   description?: boolean
   icon?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["service"]>
 
 export type ServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -387,8 +387,8 @@ export type ServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   title?: boolean
   description?: boolean
   icon?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["service"]>
 
 export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -396,8 +396,8 @@ export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   title?: boolean
   description?: boolean
   icon?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["service"]>
 
 export type ServiceSelectScalar = {
@@ -405,11 +405,11 @@ export type ServiceSelectScalar = {
   title?: boolean
   description?: boolean
   icon?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }
 
-export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "icon" | "isPublished" | "sortOrder", ExtArgs["result"]["service"]>
+export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "icon" | "sortOrder" | "isPublished", ExtArgs["result"]["service"]>
 
 export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Service"
@@ -419,8 +419,8 @@ export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     title: string
     description: string
     icon: string
-    isPublished: boolean
     sortOrder: number
+    isPublished: boolean
   }, ExtArgs["result"]["service"]>
   composites: {}
 }
@@ -848,8 +848,8 @@ export interface ServiceFieldRefs {
   readonly title: Prisma.FieldRef<"Service", 'String'>
   readonly description: Prisma.FieldRef<"Service", 'String'>
   readonly icon: Prisma.FieldRef<"Service", 'String'>
-  readonly isPublished: Prisma.FieldRef<"Service", 'Boolean'>
   readonly sortOrder: Prisma.FieldRef<"Service", 'Int'>
+  readonly isPublished: Prisma.FieldRef<"Service", 'Boolean'>
 }
     
 

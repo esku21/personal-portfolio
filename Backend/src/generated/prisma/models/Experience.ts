@@ -42,8 +42,8 @@ export type ExperienceMinAggregateOutputType = {
   startDate: string | null
   endDate: string | null
   description: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
 }
 
 export type ExperienceMaxAggregateOutputType = {
@@ -54,8 +54,8 @@ export type ExperienceMaxAggregateOutputType = {
   startDate: string | null
   endDate: string | null
   description: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
 }
 
 export type ExperienceCountAggregateOutputType = {
@@ -66,9 +66,9 @@ export type ExperienceCountAggregateOutputType = {
   startDate: number
   endDate: number
   description: number
-  imageUrls: number
-  isPublished: number
   sortOrder: number
+  isPublished: number
+  imageUrls: number
   _all: number
 }
 
@@ -89,8 +89,8 @@ export type ExperienceMinAggregateInputType = {
   startDate?: true
   endDate?: true
   description?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
 }
 
 export type ExperienceMaxAggregateInputType = {
@@ -101,8 +101,8 @@ export type ExperienceMaxAggregateInputType = {
   startDate?: true
   endDate?: true
   description?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
 }
 
 export type ExperienceCountAggregateInputType = {
@@ -113,9 +113,9 @@ export type ExperienceCountAggregateInputType = {
   startDate?: true
   endDate?: true
   description?: true
-  imageUrls?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
+  imageUrls?: true
   _all?: true
 }
 
@@ -213,9 +213,9 @@ export type ExperienceGroupByOutputType = {
   startDate: string
   endDate: string | null
   description: string
-  imageUrls: string[]
-  isPublished: boolean
   sortOrder: number
+  isPublished: boolean
+  imageUrls: string[]
   _count: ExperienceCountAggregateOutputType | null
   _avg: ExperienceAvgAggregateOutputType | null
   _sum: ExperienceSumAggregateOutputType | null
@@ -249,9 +249,9 @@ export type ExperienceWhereInput = {
   startDate?: Prisma.StringFilter<"Experience"> | string
   endDate?: Prisma.StringNullableFilter<"Experience"> | string | null
   description?: Prisma.StringFilter<"Experience"> | string
-  imageUrls?: Prisma.StringNullableListFilter<"Experience">
-  isPublished?: Prisma.BoolFilter<"Experience"> | boolean
   sortOrder?: Prisma.IntFilter<"Experience"> | number
+  isPublished?: Prisma.BoolFilter<"Experience"> | boolean
+  imageUrls?: Prisma.StringNullableListFilter<"Experience">
 }
 
 export type ExperienceOrderByWithRelationInput = {
@@ -262,9 +262,9 @@ export type ExperienceOrderByWithRelationInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
-  imageUrls?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
+  imageUrls?: Prisma.SortOrder
 }
 
 export type ExperienceWhereUniqueInput = Prisma.AtLeast<{
@@ -278,9 +278,9 @@ export type ExperienceWhereUniqueInput = Prisma.AtLeast<{
   startDate?: Prisma.StringFilter<"Experience"> | string
   endDate?: Prisma.StringNullableFilter<"Experience"> | string | null
   description?: Prisma.StringFilter<"Experience"> | string
-  imageUrls?: Prisma.StringNullableListFilter<"Experience">
-  isPublished?: Prisma.BoolFilter<"Experience"> | boolean
   sortOrder?: Prisma.IntFilter<"Experience"> | number
+  isPublished?: Prisma.BoolFilter<"Experience"> | boolean
+  imageUrls?: Prisma.StringNullableListFilter<"Experience">
 }, "id">
 
 export type ExperienceOrderByWithAggregationInput = {
@@ -291,9 +291,9 @@ export type ExperienceOrderByWithAggregationInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
-  imageUrls?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
+  imageUrls?: Prisma.SortOrder
   _count?: Prisma.ExperienceCountOrderByAggregateInput
   _avg?: Prisma.ExperienceAvgOrderByAggregateInput
   _max?: Prisma.ExperienceMaxOrderByAggregateInput
@@ -312,9 +312,9 @@ export type ExperienceScalarWhereWithAggregatesInput = {
   startDate?: Prisma.StringWithAggregatesFilter<"Experience"> | string
   endDate?: Prisma.StringNullableWithAggregatesFilter<"Experience"> | string | null
   description?: Prisma.StringWithAggregatesFilter<"Experience"> | string
-  imageUrls?: Prisma.StringNullableListFilter<"Experience">
-  isPublished?: Prisma.BoolWithAggregatesFilter<"Experience"> | boolean
   sortOrder?: Prisma.IntWithAggregatesFilter<"Experience"> | number
+  isPublished?: Prisma.BoolWithAggregatesFilter<"Experience"> | boolean
+  imageUrls?: Prisma.StringNullableListFilter<"Experience">
 }
 
 export type ExperienceCreateInput = {
@@ -325,9 +325,9 @@ export type ExperienceCreateInput = {
   startDate: string
   endDate?: string | null
   description: string
-  imageUrls?: Prisma.ExperienceCreateimageUrlsInput | string[]
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
+  imageUrls?: Prisma.ExperienceCreateimageUrlsInput | string[]
 }
 
 export type ExperienceUncheckedCreateInput = {
@@ -338,9 +338,9 @@ export type ExperienceUncheckedCreateInput = {
   startDate: string
   endDate?: string | null
   description: string
-  imageUrls?: Prisma.ExperienceCreateimageUrlsInput | string[]
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
+  imageUrls?: Prisma.ExperienceCreateimageUrlsInput | string[]
 }
 
 export type ExperienceUpdateInput = {
@@ -351,9 +351,9 @@ export type ExperienceUpdateInput = {
   startDate?: Prisma.StringFieldUpdateOperationsInput | string
   endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  imageUrls?: Prisma.ExperienceUpdateimageUrlsInput | string[]
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrls?: Prisma.ExperienceUpdateimageUrlsInput | string[]
 }
 
 export type ExperienceUncheckedUpdateInput = {
@@ -364,9 +364,9 @@ export type ExperienceUncheckedUpdateInput = {
   startDate?: Prisma.StringFieldUpdateOperationsInput | string
   endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  imageUrls?: Prisma.ExperienceUpdateimageUrlsInput | string[]
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrls?: Prisma.ExperienceUpdateimageUrlsInput | string[]
 }
 
 export type ExperienceCreateManyInput = {
@@ -377,9 +377,9 @@ export type ExperienceCreateManyInput = {
   startDate: string
   endDate?: string | null
   description: string
-  imageUrls?: Prisma.ExperienceCreateimageUrlsInput | string[]
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
+  imageUrls?: Prisma.ExperienceCreateimageUrlsInput | string[]
 }
 
 export type ExperienceUpdateManyMutationInput = {
@@ -390,9 +390,9 @@ export type ExperienceUpdateManyMutationInput = {
   startDate?: Prisma.StringFieldUpdateOperationsInput | string
   endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  imageUrls?: Prisma.ExperienceUpdateimageUrlsInput | string[]
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrls?: Prisma.ExperienceUpdateimageUrlsInput | string[]
 }
 
 export type ExperienceUncheckedUpdateManyInput = {
@@ -403,9 +403,9 @@ export type ExperienceUncheckedUpdateManyInput = {
   startDate?: Prisma.StringFieldUpdateOperationsInput | string
   endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  imageUrls?: Prisma.ExperienceUpdateimageUrlsInput | string[]
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrls?: Prisma.ExperienceUpdateimageUrlsInput | string[]
 }
 
 export type ExperienceCountOrderByAggregateInput = {
@@ -416,9 +416,9 @@ export type ExperienceCountOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  imageUrls?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
+  imageUrls?: Prisma.SortOrder
 }
 
 export type ExperienceAvgOrderByAggregateInput = {
@@ -433,8 +433,8 @@ export type ExperienceMaxOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type ExperienceMinOrderByAggregateInput = {
@@ -445,8 +445,8 @@ export type ExperienceMinOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type ExperienceSumOrderByAggregateInput = {
@@ -472,9 +472,9 @@ export type ExperienceSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   startDate?: boolean
   endDate?: boolean
   description?: boolean
-  imageUrls?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
+  imageUrls?: boolean
 }, ExtArgs["result"]["experience"]>
 
 export type ExperienceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -485,9 +485,9 @@ export type ExperienceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   startDate?: boolean
   endDate?: boolean
   description?: boolean
-  imageUrls?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
+  imageUrls?: boolean
 }, ExtArgs["result"]["experience"]>
 
 export type ExperienceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -498,9 +498,9 @@ export type ExperienceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   startDate?: boolean
   endDate?: boolean
   description?: boolean
-  imageUrls?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
+  imageUrls?: boolean
 }, ExtArgs["result"]["experience"]>
 
 export type ExperienceSelectScalar = {
@@ -511,12 +511,12 @@ export type ExperienceSelectScalar = {
   startDate?: boolean
   endDate?: boolean
   description?: boolean
-  imageUrls?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
+  imageUrls?: boolean
 }
 
-export type ExperienceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "role" | "company" | "location" | "startDate" | "endDate" | "description" | "imageUrls" | "isPublished" | "sortOrder", ExtArgs["result"]["experience"]>
+export type ExperienceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "role" | "company" | "location" | "startDate" | "endDate" | "description" | "sortOrder" | "isPublished" | "imageUrls", ExtArgs["result"]["experience"]>
 
 export type $ExperiencePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Experience"
@@ -529,9 +529,9 @@ export type $ExperiencePayload<ExtArgs extends runtime.Types.Extensions.Internal
     startDate: string
     endDate: string | null
     description: string
-    imageUrls: string[]
-    isPublished: boolean
     sortOrder: number
+    isPublished: boolean
+    imageUrls: string[]
   }, ExtArgs["result"]["experience"]>
   composites: {}
 }
@@ -962,9 +962,9 @@ export interface ExperienceFieldRefs {
   readonly startDate: Prisma.FieldRef<"Experience", 'String'>
   readonly endDate: Prisma.FieldRef<"Experience", 'String'>
   readonly description: Prisma.FieldRef<"Experience", 'String'>
-  readonly imageUrls: Prisma.FieldRef<"Experience", 'String[]'>
-  readonly isPublished: Prisma.FieldRef<"Experience", 'Boolean'>
   readonly sortOrder: Prisma.FieldRef<"Experience", 'Int'>
+  readonly isPublished: Prisma.FieldRef<"Experience", 'Boolean'>
+  readonly imageUrls: Prisma.FieldRef<"Experience", 'String[]'>
 }
     
 

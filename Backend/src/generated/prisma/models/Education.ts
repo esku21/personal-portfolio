@@ -42,8 +42,8 @@ export type EducationMinAggregateOutputType = {
   startDate: string | null
   endDate: string | null
   description: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
 }
 
 export type EducationMaxAggregateOutputType = {
@@ -54,8 +54,8 @@ export type EducationMaxAggregateOutputType = {
   startDate: string | null
   endDate: string | null
   description: string | null
-  isPublished: boolean | null
   sortOrder: number | null
+  isPublished: boolean | null
 }
 
 export type EducationCountAggregateOutputType = {
@@ -66,8 +66,8 @@ export type EducationCountAggregateOutputType = {
   startDate: number
   endDate: number
   description: number
-  isPublished: number
   sortOrder: number
+  isPublished: number
   _all: number
 }
 
@@ -88,8 +88,8 @@ export type EducationMinAggregateInputType = {
   startDate?: true
   endDate?: true
   description?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
 }
 
 export type EducationMaxAggregateInputType = {
@@ -100,8 +100,8 @@ export type EducationMaxAggregateInputType = {
   startDate?: true
   endDate?: true
   description?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
 }
 
 export type EducationCountAggregateInputType = {
@@ -112,8 +112,8 @@ export type EducationCountAggregateInputType = {
   startDate?: true
   endDate?: true
   description?: true
-  isPublished?: true
   sortOrder?: true
+  isPublished?: true
   _all?: true
 }
 
@@ -211,8 +211,8 @@ export type EducationGroupByOutputType = {
   startDate: string
   endDate: string | null
   description: string | null
-  isPublished: boolean
   sortOrder: number
+  isPublished: boolean
   _count: EducationCountAggregateOutputType | null
   _avg: EducationAvgAggregateOutputType | null
   _sum: EducationSumAggregateOutputType | null
@@ -246,8 +246,8 @@ export type EducationWhereInput = {
   startDate?: Prisma.StringFilter<"Education"> | string
   endDate?: Prisma.StringNullableFilter<"Education"> | string | null
   description?: Prisma.StringNullableFilter<"Education"> | string | null
-  isPublished?: Prisma.BoolFilter<"Education"> | boolean
   sortOrder?: Prisma.IntFilter<"Education"> | number
+  isPublished?: Prisma.BoolFilter<"Education"> | boolean
 }
 
 export type EducationOrderByWithRelationInput = {
@@ -258,8 +258,8 @@ export type EducationOrderByWithRelationInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type EducationWhereUniqueInput = Prisma.AtLeast<{
@@ -273,8 +273,8 @@ export type EducationWhereUniqueInput = Prisma.AtLeast<{
   startDate?: Prisma.StringFilter<"Education"> | string
   endDate?: Prisma.StringNullableFilter<"Education"> | string | null
   description?: Prisma.StringNullableFilter<"Education"> | string | null
-  isPublished?: Prisma.BoolFilter<"Education"> | boolean
   sortOrder?: Prisma.IntFilter<"Education"> | number
+  isPublished?: Prisma.BoolFilter<"Education"> | boolean
 }, "id">
 
 export type EducationOrderByWithAggregationInput = {
@@ -285,8 +285,8 @@ export type EducationOrderByWithAggregationInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
   _count?: Prisma.EducationCountOrderByAggregateInput
   _avg?: Prisma.EducationAvgOrderByAggregateInput
   _max?: Prisma.EducationMaxOrderByAggregateInput
@@ -305,8 +305,8 @@ export type EducationScalarWhereWithAggregatesInput = {
   startDate?: Prisma.StringWithAggregatesFilter<"Education"> | string
   endDate?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
-  isPublished?: Prisma.BoolWithAggregatesFilter<"Education"> | boolean
   sortOrder?: Prisma.IntWithAggregatesFilter<"Education"> | number
+  isPublished?: Prisma.BoolWithAggregatesFilter<"Education"> | boolean
 }
 
 export type EducationCreateInput = {
@@ -317,8 +317,8 @@ export type EducationCreateInput = {
   startDate: string
   endDate?: string | null
   description?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type EducationUncheckedCreateInput = {
@@ -329,8 +329,8 @@ export type EducationUncheckedCreateInput = {
   startDate: string
   endDate?: string | null
   description?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type EducationUpdateInput = {
@@ -341,8 +341,8 @@ export type EducationUpdateInput = {
   startDate?: Prisma.StringFieldUpdateOperationsInput | string
   endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type EducationUncheckedUpdateInput = {
@@ -353,8 +353,8 @@ export type EducationUncheckedUpdateInput = {
   startDate?: Prisma.StringFieldUpdateOperationsInput | string
   endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type EducationCreateManyInput = {
@@ -365,8 +365,8 @@ export type EducationCreateManyInput = {
   startDate: string
   endDate?: string | null
   description?: string | null
-  isPublished?: boolean
   sortOrder?: number
+  isPublished?: boolean
 }
 
 export type EducationUpdateManyMutationInput = {
@@ -377,8 +377,8 @@ export type EducationUpdateManyMutationInput = {
   startDate?: Prisma.StringFieldUpdateOperationsInput | string
   endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type EducationUncheckedUpdateManyInput = {
@@ -389,8 +389,8 @@ export type EducationUncheckedUpdateManyInput = {
   startDate?: Prisma.StringFieldUpdateOperationsInput | string
   endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type EducationCountOrderByAggregateInput = {
@@ -401,8 +401,8 @@ export type EducationCountOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type EducationAvgOrderByAggregateInput = {
@@ -417,8 +417,8 @@ export type EducationMaxOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type EducationMinOrderByAggregateInput = {
@@ -429,8 +429,8 @@ export type EducationMinOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  isPublished?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  isPublished?: Prisma.SortOrder
 }
 
 export type EducationSumOrderByAggregateInput = {
@@ -447,8 +447,8 @@ export type EducationSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   startDate?: boolean
   endDate?: boolean
   description?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["education"]>
 
 export type EducationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -459,8 +459,8 @@ export type EducationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   startDate?: boolean
   endDate?: boolean
   description?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["education"]>
 
 export type EducationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -471,8 +471,8 @@ export type EducationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   startDate?: boolean
   endDate?: boolean
   description?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }, ExtArgs["result"]["education"]>
 
 export type EducationSelectScalar = {
@@ -483,11 +483,11 @@ export type EducationSelectScalar = {
   startDate?: boolean
   endDate?: boolean
   description?: boolean
-  isPublished?: boolean
   sortOrder?: boolean
+  isPublished?: boolean
 }
 
-export type EducationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "institution" | "degree" | "location" | "startDate" | "endDate" | "description" | "isPublished" | "sortOrder", ExtArgs["result"]["education"]>
+export type EducationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "institution" | "degree" | "location" | "startDate" | "endDate" | "description" | "sortOrder" | "isPublished", ExtArgs["result"]["education"]>
 
 export type $EducationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Education"
@@ -500,8 +500,8 @@ export type $EducationPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     startDate: string
     endDate: string | null
     description: string | null
-    isPublished: boolean
     sortOrder: number
+    isPublished: boolean
   }, ExtArgs["result"]["education"]>
   composites: {}
 }
@@ -932,8 +932,8 @@ export interface EducationFieldRefs {
   readonly startDate: Prisma.FieldRef<"Education", 'String'>
   readonly endDate: Prisma.FieldRef<"Education", 'String'>
   readonly description: Prisma.FieldRef<"Education", 'String'>
-  readonly isPublished: Prisma.FieldRef<"Education", 'Boolean'>
   readonly sortOrder: Prisma.FieldRef<"Education", 'Int'>
+  readonly isPublished: Prisma.FieldRef<"Education", 'Boolean'>
 }
     
 

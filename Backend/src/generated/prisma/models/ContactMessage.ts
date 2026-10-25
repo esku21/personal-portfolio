@@ -28,36 +28,36 @@ export type ContactMessageMinAggregateOutputType = {
   id: string | null
   name: string | null
   email: string | null
-  phone: string | null
   subject: string | null
   message: string | null
   status: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  phone: string | null
 }
 
 export type ContactMessageMaxAggregateOutputType = {
   id: string | null
   name: string | null
   email: string | null
-  phone: string | null
   subject: string | null
   message: string | null
   status: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  phone: string | null
 }
 
 export type ContactMessageCountAggregateOutputType = {
   id: number
   name: number
   email: number
-  phone: number
   subject: number
   message: number
   status: number
   createdAt: number
   updatedAt: number
+  phone: number
   _all: number
 }
 
@@ -66,36 +66,36 @@ export type ContactMessageMinAggregateInputType = {
   id?: true
   name?: true
   email?: true
-  phone?: true
   subject?: true
   message?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  phone?: true
 }
 
 export type ContactMessageMaxAggregateInputType = {
   id?: true
   name?: true
   email?: true
-  phone?: true
   subject?: true
   message?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  phone?: true
 }
 
 export type ContactMessageCountAggregateInputType = {
   id?: true
   name?: true
   email?: true
-  phone?: true
   subject?: true
   message?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  phone?: true
   _all?: true
 }
 
@@ -175,12 +175,12 @@ export type ContactMessageGroupByOutputType = {
   id: string
   name: string
   email: string
-  phone: string
   subject: string
   message: string
   status: string
   createdAt: Date
   updatedAt: Date
+  phone: string
   _count: ContactMessageCountAggregateOutputType | null
   _min: ContactMessageMinAggregateOutputType | null
   _max: ContactMessageMaxAggregateOutputType | null
@@ -208,24 +208,24 @@ export type ContactMessageWhereInput = {
   id?: Prisma.StringFilter<"ContactMessage"> | string
   name?: Prisma.StringFilter<"ContactMessage"> | string
   email?: Prisma.StringFilter<"ContactMessage"> | string
-  phone?: Prisma.StringFilter<"ContactMessage"> | string
   subject?: Prisma.StringFilter<"ContactMessage"> | string
   message?: Prisma.StringFilter<"ContactMessage"> | string
   status?: Prisma.StringFilter<"ContactMessage"> | string
   createdAt?: Prisma.DateTimeFilter<"ContactMessage"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ContactMessage"> | Date | string
+  phone?: Prisma.StringFilter<"ContactMessage"> | string
 }
 
 export type ContactMessageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
   subject?: Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
 }
 
 export type ContactMessageWhereUniqueInput = Prisma.AtLeast<{
@@ -235,24 +235,24 @@ export type ContactMessageWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ContactMessageWhereInput | Prisma.ContactMessageWhereInput[]
   name?: Prisma.StringFilter<"ContactMessage"> | string
   email?: Prisma.StringFilter<"ContactMessage"> | string
-  phone?: Prisma.StringFilter<"ContactMessage"> | string
   subject?: Prisma.StringFilter<"ContactMessage"> | string
   message?: Prisma.StringFilter<"ContactMessage"> | string
   status?: Prisma.StringFilter<"ContactMessage"> | string
   createdAt?: Prisma.DateTimeFilter<"ContactMessage"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ContactMessage"> | Date | string
+  phone?: Prisma.StringFilter<"ContactMessage"> | string
 }, "id">
 
 export type ContactMessageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
   subject?: Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   _count?: Prisma.ContactMessageCountOrderByAggregateInput
   _max?: Prisma.ContactMessageMaxOrderByAggregateInput
   _min?: Prisma.ContactMessageMinOrderByAggregateInput
@@ -265,132 +265,132 @@ export type ContactMessageScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"ContactMessage"> | string
   name?: Prisma.StringWithAggregatesFilter<"ContactMessage"> | string
   email?: Prisma.StringWithAggregatesFilter<"ContactMessage"> | string
-  phone?: Prisma.StringWithAggregatesFilter<"ContactMessage"> | string
   subject?: Prisma.StringWithAggregatesFilter<"ContactMessage"> | string
   message?: Prisma.StringWithAggregatesFilter<"ContactMessage"> | string
   status?: Prisma.StringWithAggregatesFilter<"ContactMessage"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ContactMessage"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ContactMessage"> | Date | string
+  phone?: Prisma.StringWithAggregatesFilter<"ContactMessage"> | string
 }
 
 export type ContactMessageCreateInput = {
   id?: string
   name: string
   email: string
-  phone: string
   subject: string
   message: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  phone: string
 }
 
 export type ContactMessageUncheckedCreateInput = {
   id?: string
   name: string
   email: string
-  phone: string
   subject: string
   message: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  phone: string
 }
 
 export type ContactMessageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ContactMessageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ContactMessageCreateManyInput = {
   id?: string
   name: string
   email: string
-  phone: string
   subject: string
   message: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  phone: string
 }
 
 export type ContactMessageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ContactMessageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ContactMessageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
   subject?: Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
 }
 
 export type ContactMessageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
   subject?: Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
 }
 
 export type ContactMessageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  phone?: Prisma.SortOrder
   subject?: Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
 }
 
 
@@ -399,51 +399,51 @@ export type ContactMessageSelect<ExtArgs extends runtime.Types.Extensions.Intern
   id?: boolean
   name?: boolean
   email?: boolean
-  phone?: boolean
   subject?: boolean
   message?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  phone?: boolean
 }, ExtArgs["result"]["contactMessage"]>
 
 export type ContactMessageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   email?: boolean
-  phone?: boolean
   subject?: boolean
   message?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  phone?: boolean
 }, ExtArgs["result"]["contactMessage"]>
 
 export type ContactMessageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   email?: boolean
-  phone?: boolean
   subject?: boolean
   message?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  phone?: boolean
 }, ExtArgs["result"]["contactMessage"]>
 
 export type ContactMessageSelectScalar = {
   id?: boolean
   name?: boolean
   email?: boolean
-  phone?: boolean
   subject?: boolean
   message?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  phone?: boolean
 }
 
-export type ContactMessageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "phone" | "subject" | "message" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["contactMessage"]>
+export type ContactMessageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "subject" | "message" | "status" | "createdAt" | "updatedAt" | "phone", ExtArgs["result"]["contactMessage"]>
 
 export type $ContactMessagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ContactMessage"
@@ -452,12 +452,12 @@ export type $ContactMessagePayload<ExtArgs extends runtime.Types.Extensions.Inte
     id: string
     name: string
     email: string
-    phone: string
     subject: string
     message: string
     status: string
     createdAt: Date
     updatedAt: Date
+    phone: string
   }, ExtArgs["result"]["contactMessage"]>
   composites: {}
 }
@@ -884,12 +884,12 @@ export interface ContactMessageFieldRefs {
   readonly id: Prisma.FieldRef<"ContactMessage", 'String'>
   readonly name: Prisma.FieldRef<"ContactMessage", 'String'>
   readonly email: Prisma.FieldRef<"ContactMessage", 'String'>
-  readonly phone: Prisma.FieldRef<"ContactMessage", 'String'>
   readonly subject: Prisma.FieldRef<"ContactMessage", 'String'>
   readonly message: Prisma.FieldRef<"ContactMessage", 'String'>
   readonly status: Prisma.FieldRef<"ContactMessage", 'String'>
   readonly createdAt: Prisma.FieldRef<"ContactMessage", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ContactMessage", 'DateTime'>
+  readonly phone: Prisma.FieldRef<"ContactMessage", 'String'>
 }
     
 
